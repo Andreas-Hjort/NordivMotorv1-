@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 import javax.persistence.Entity;
 
 @Entity
-public class DropOFF {
+public class Dropoff {
     
     @Id
     private int id;
