@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="C:\NordicRental\src\main\resources\static\Tablestructure.css" type="text/css">
+    <link href="../MyCSS.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+
+<table>
+    <thead>
 <tr>
     <th>Id</th>
     <th>First name</th>
@@ -14,6 +16,7 @@
     <th>Mail</th>
     <th>address</th>
     <th>Zip</th>
+    <th>Buttons</th>
 </tr>
 </thead>
 <tbody>
@@ -26,6 +29,14 @@
     <td th:text="${person.address}" />
     <td th:text="${person.zip}" />
     <td>
-
+        <a th:href="@{'/deleteCustomer/'+@{person.id}}">
+            <button class="btn-delete" id="btn-delete">Delete</button>
+        </a>
+        <a th:href = "@{'/updateCustomer/'+@{person.id}}">
+            <button class="btn-update" id="btn-update">Edit</button>
+        </a>
+    </td>
+    </tr>
+</table>
 </body>
 </html>
