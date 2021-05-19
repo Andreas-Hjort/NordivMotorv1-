@@ -1,6 +1,7 @@
 table{
     border-collapse: collapse;
-    width: 40%;
+    width: 80%;
+    margin: auto;
 }
 th{
     background-color: lightblue;
@@ -10,6 +11,7 @@ td, th{
     text-align: left;
     padding: 4px;
 }
+
 tr:nth-child(even){
     background-color:lightgray;
 }
@@ -28,12 +30,14 @@ tr:nth-child(even){
 }
 #btn-viewOne{
     background-color: whitesmoke;
+    width: 50px;
 }
 #btn-delete{
     background-color: whitesmoke;
+    width: 50px;
 
 }
 #btn-update{
     background-color: whitesmoke;
-    padding: 2px 16px;
+    width: 50px;
 }

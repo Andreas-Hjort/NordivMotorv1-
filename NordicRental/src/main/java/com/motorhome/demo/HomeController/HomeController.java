@@ -19,14 +19,20 @@ public class HomeController {
     CustomerService customerService;
 
     @GetMapping("/")
+    public String frontpage(){
+        return "home/index";
+    }
+
+    @GetMapping("/showCustomer")
     public String index(Model model) {
         List<Person> customerlist = customerService.fetchALL();
         model.addAttribute("customers", customerlist);
         return "home/showCustomer";
     }
 
+
     @GetMapping("/create")
-    public String create(){return ("home/create");}
+    public String create(){return ("home/createCustomer");}
     @PostMapping
     public String create(@ModelAttribute Person p ){
         customerService.addPerson(p);

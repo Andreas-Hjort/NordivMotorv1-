@@ -1,0 +1,28 @@
+
+#wrapperContact{
+    height: 400px;
+    width: 900px;
+    border: 1px solid black;
+    margin: auto;
+    padding: 4px;
+    background-color: lightblue;
+}
+.container {
+    width: 350px;
+    clear: both;
+}
+.container input {
+    width: 100%;
+    clear: both;
+}
+
+
+#left{
+    width: 448px;
+    float: left;
+}
+
+#right{
+    width: 448px;
+    float: left;
+}
