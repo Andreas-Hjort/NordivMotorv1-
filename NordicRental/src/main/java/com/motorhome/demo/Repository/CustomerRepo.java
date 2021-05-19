@@ -20,4 +20,15 @@ public class CustomerRepo {
         RowMapper<Person> rowMapper = new BeanPropertyRowMapper<>(Person.class);
         return template.query(sql, rowMapper);
     }
+
+    public Person addCustomer(Person p){
+        String sql = "INSERT INTO motorhome.customer (first_name, last_name, phonenumber, mail, address, zip";
+        template.update(sql, p.getFirstName(),p.getLastName(), p.getPhone(), p.getMail(), p.getAddress(), p.getZip());
+        return null;
+    }
+
+    public Boolean deletePerson(int id){
+        String sql = "DELETE FROM motorhome.customer WHERE id_customer = ?";
+        return template.update(sql, id) > 0;
+    }
 }

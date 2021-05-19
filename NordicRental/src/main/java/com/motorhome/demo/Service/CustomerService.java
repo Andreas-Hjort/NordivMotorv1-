@@ -17,4 +17,12 @@ public class CustomerService {
         return customerRepo.fetchALL();
     }
 
+    public Person addPerson(Person p){
+        return customerRepo.addCustomer(p);
+    }
+
+    public Boolean deletePerson(int id){
+        return customerRepo.deletePerson(id);
+    }
+
 }
