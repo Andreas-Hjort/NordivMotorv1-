@@ -1,6 +1,7 @@
 package com.motorhome.demo.HomeController;
 
 import com.motorhome.demo.Model.Person;
+import com.motorhome.demo.Service.ContractService;
 import com.motorhome.demo.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class HomeController {
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    ContractService contractService;
+
     @GetMapping("/")
     public String frontpage(){
         return "home/index";
@@ -29,7 +33,6 @@ public class HomeController {
         model.addAttribute("customers", customerlist);
         return "home/showCustomer";
     }
-
 
     @GetMapping("/create")
     public String create(){return ("home/createCustomer");}
