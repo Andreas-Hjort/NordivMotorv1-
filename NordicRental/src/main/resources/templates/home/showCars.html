@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars overview</title>
+  <link href="../MyCSS.css" rel="stylesheet" type="text/css">
+  <link href="../style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- Navigation topbar der går igen på samtlige sider -->
+<nav>
+  <p><a href="/">Nordic Motorhomes</a></p>
+  <ul>
+    <li><a href="#">Account </a>
+      <ul>
+        <li><a href="/create">Create account</a> </li>
+        <li><a href="/showCustomer">Show account
+
+        </a> </li>
+      </ul>
+    </li>
+    <li><a href="#">Browse Cars</a>
+      <ul>
+        <li><a href="">Reserve Cars</a> </li>
+        <li><a href="">Rented Cars</a> </li>
+      </ul>
+    </li>
+    <li><a href="#">Statistic</a>
+    </li>
+    <li><a href="#">About us</a>
+      <ul>
+        <li><a href ="">Nordic Motorhomes</a> </li>
+        <li><a href ="https://www.google.com/maps/place/Christian+4+Vej+53,+6000+Kolding/@55.472469,9.4883382,17z/data=!3m1!4b1!4m5!3m4!1s0x464ca1e7593e6a0d:0x87e7bc609fd75b49!8m2!3d55.472469!4d9.4905269">Christian 4 vej 53</a>
+        <li><a href ="https://www.google.com/maps/place/Christian+4+Vej+53,+6000+Kolding/@55.472469,9.4883382,17z/data=!3m1!4b1!4m5!3m4!1s0x464ca1e7593e6a0d:0x87e7bc609fd75b49!8m2!3d55.472469!4d9.4905269">6000 Kolding</a> </li>
+        <li><a href ="">Tlf: 22991913</a> </li>
+        <li><a href ="mailto:nordicmotorhomes@outlook.dk">Mail:NMH@outlook.dk</a> </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Beds</th>
+    <th>Odometer</th>
+    <th>Status</th>
+    <th>Needs cleaning</th>
+    <th>Needs service</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="cars: ${cars}">
+    <td th:text="${Cars.id}" />
+    <td th:text="${Cars.brand}" />
+    <td th:text="${Cars.model}" />
+    <td th:text="${Cars.beds}" />
+    <td th:text="${Cars.odometer}" />
+    <td th:text="${Cars.status}" />
+    <td th:text="${Cars.cleaning}" />
+    <td th:text="${Cars.service}"/>
+
+  <td>
+    <!-- Mangler metoder i CarRepo-->
+   <a th:href="EDIT-BIL-METODE">
+    <button class="btn-update" id="btn-update">Edit</button>
+    <a/>
+
+     <a th.href ="@{'deleteCar/' +@{car.id}}">
+      <button class="btn-delete" id="btn-delete">Delete</button>
+    </a>
+    <a th:href="BOOK-BIL-METODE">
+      <button class="btn-book" id="btn-book">Book</button>
+    </a>
+
+  </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

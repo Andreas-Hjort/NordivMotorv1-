@@ -1,6 +1,8 @@
 package com.motorhome.demo.HomeController;
 
+import com.motorhome.demo.Model.Cars;
 import com.motorhome.demo.Model.Person;
+import com.motorhome.demo.Service.CarService;
 import com.motorhome.demo.Service.ContractService;
 import com.motorhome.demo.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class HomeController {
 
     @Autowired
     ContractService contractService;
+
+    @Autowired
+    CarService carService;
 
     @GetMapping("/")
     public String frontpage(){
@@ -52,5 +57,11 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/showCars")
+    public String carIndex(Model model) {
+        List<Cars> carsList = carService.fetchALL();
+        model.addAttribute("cars", carsList);
+        return "home/showCars";
+    }
 
 }
