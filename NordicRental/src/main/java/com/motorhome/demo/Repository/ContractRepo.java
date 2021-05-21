@@ -24,9 +24,9 @@ public class ContractRepo {
 
     public Contracts addContract(Contracts c){
         String sql = "INSERT INTO motorhome.contracts (idcontracts,idcar, idcustomer, date_of_reserve, date_of_handin, start_kilometer, end_kilometer, price, iddropoff";
-        template.update(sql,c.getIDcontract(), c.getIDcar(), c.getIDcustomer(), c.getDateOfReservation(),
-                c.getDateOfHandIn(), c.getStartOdometer(),
-                c.getEndOdometer(), c.getPrice(), c.getIDdropOff(), c.getIDPickUp() );
+        template.update(sql,c.getId(), c.getIDcar(), c.getIDcustomer(), c.getDate_of_Reserve(),
+                c.getDate_of_handIn(), c.getStart_kilometer(),
+                c.getEnd_kilometer(), c.getPrice(), c.getIDdropOff(), c.getIDPickUp() );
         return null;
     }
 

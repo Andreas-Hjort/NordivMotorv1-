@@ -57,13 +57,13 @@
     </thead>
     <tbody>
     <tr th:each="contracts: ${contractlist}">
-        <td th:text="${contracts.IDcontract}"/>
+        <td th:text="${contracts.id}"/>
         <td th:text="${contracts.IDcar}"/>
         <td th:text="${contracts.IDcustomer}"/>
-        <td th:text="${contracts.dateOfReservation}"/>
-        <td th:text="${contracts.dateOfHandIn}"/>
-        <td th:text="${contracts.startOdometer}"/>
-        <td th:text="${contracts.endOdometer}"/>
+        <td th:text="${contracts.date_of_Reserve}"/>
+        <td th:text="${contracts.date_of_handIn}"/>
+        <td th:text="${contracts.start_kilometer}"/>
+        <td th:text="${contracts.end_kilometer}"/>
         <td th:text="${contracts.price}"/>
         <td th:text="${contracts.IDPickUp}"/>
         <td th:text="${contracts.IDdropOff}"/>

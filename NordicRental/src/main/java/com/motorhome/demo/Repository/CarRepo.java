@@ -16,7 +16,7 @@ public class CarRepo {
     JdbcTemplate template;
 
     public List<Cars> fetchALL(){
-        String sql = "SELECT idcars, brand, model, beds, odometer, status, cleaning, service FROM motorhome.cars";
+        String sql = "SELECT * FROM motorhome.cars";
         RowMapper<Cars> rowMapper = new BeanPropertyRowMapper<>(Cars.class);
         return template.query(sql, rowMapper);
     }

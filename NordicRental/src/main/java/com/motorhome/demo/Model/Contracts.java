@@ -7,39 +7,25 @@ import javax.persistence.Id;
 public class Contracts {
 
     @Id
-    private int IDcontract;
+    private int id;
     private int IDcar;
     private int IDcustomer;
-    private String dateOfReservation;
-    private String dateOfHandIn;
-    private double startOdometer;
-    private double endOdometer;
+    private String date_of_Reserve;
+    private String date_of_handIn;
+    private double start_kilometer;
+    private double end_kilometer;
     private int price;
     private String IDPickUp;
     private String IDdropOff;
 
-    public Contracts(int IDcontract, int IDcar, int IDcustomer, String dateOfReservation, String dateOfHandIn, double startOdometer,
-                     double endOdometer, int price, String IDPickUp, String IDdropOff) {
-        this.IDcontract = IDcontract;
-        this.IDcar = IDcar;
-        this.IDcustomer = IDcustomer;
-        this.dateOfReservation = dateOfReservation;
-        this.dateOfHandIn = dateOfHandIn;
-        this.startOdometer = startOdometer;
-        this.endOdometer = endOdometer;
-        this.price = price;
-        this.IDPickUp = IDPickUp;
-        this.IDdropOff = IDdropOff;
-    }
-
     public Contracts(){}
 
-    public int getIDcontract() {
-        return IDcontract;
+    public int getId() {
+        return id;
     }
 
-    public void setIDcontract(int IDcontract) {
-        this.IDcontract = IDcontract;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getIDcar() {
@@ -58,36 +44,36 @@ public class Contracts {
         this.IDcustomer = IDcustomer;
     }
 
-    public String getDateOfReservation() {
-        return dateOfReservation;
+    public String getDate_of_Reserve() {
+        return date_of_Reserve;
     }
 
-    public void setDateOfReservation(String dateOfReservation) {
-        this.dateOfReservation = dateOfReservation;
+    public void setDate_of_Reserve(String date_of_Reserve) {
+        this.date_of_Reserve = date_of_Reserve;
     }
 
-    public String getDateOfHandIn() {
-        return dateOfHandIn;
+    public String getDate_of_handIn() {
+        return date_of_handIn;
     }
 
-    public void setDateOfHandIn(String dateOfHandIn) {
-        this.dateOfHandIn = dateOfHandIn;
+    public void setDate_of_handIn(String date_of_handIn) {
+        this.date_of_handIn = date_of_handIn;
     }
 
-    public double getStartOdometer() {
-        return startOdometer;
+    public double getStart_kilometer() {
+        return start_kilometer;
     }
 
-    public void setStartOdometer(double startOdometer) {
-        this.startOdometer = startOdometer;
+    public void setStart_kilometer(double start_kilometer) {
+        this.start_kilometer = start_kilometer;
     }
 
-    public double getEndOdometer() {
-        return endOdometer;
+    public double getEnd_kilometer() {
+        return end_kilometer;
     }
 
-    public void setEndOdometer(double endOdometer) {
-        this.endOdometer = endOdometer;
+    public void setEnd_kilometer(double end_kilometer) {
+        this.end_kilometer = end_kilometer;
     }
 
     public int getPrice() {

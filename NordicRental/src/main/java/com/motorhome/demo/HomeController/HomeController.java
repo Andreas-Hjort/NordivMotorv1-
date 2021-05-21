@@ -37,9 +37,6 @@ public class HomeController {
     public String index(Model model) {
         List<Person> customerlist = customerService.fetchALL();
         model.addAttribute("customers", customerlist);
-        for (int i = 0; i < customerlist.size(); i ++){
-            System.out.println(customerlist.get(i));
-        }
         return "home/showCustomer";
     }
 

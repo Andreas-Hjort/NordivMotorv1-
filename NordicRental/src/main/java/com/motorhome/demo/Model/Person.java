@@ -1,27 +1,24 @@
 package com.motorhome.demo.Model;
 
 
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Person {
 
-   @Id
+
+    @Id
     private int id;
     private String firstName;
     private String lastName;
-    private int phone;
+    private String phone;
     private String mail;
     private String address;
-    private int zip;
 
-    public Person(){
-
-    }
-
-    public Person(int id, String firstName, String lastName, int phone, String mail, String address, int zip){
+    public Person(int id, String firstName, String lastName, String phone, String mail, String address, int zip) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,6 +28,10 @@ public class Person {
         this.zip = zip;
     }
 
+    private int zip;
+
+    public Person(){
+    }
 
     public int getId() {
         return id;
@@ -39,8 +40,6 @@ public class Person {
     public void setId(int id){
         this.id=id;
     }
-
-
 
     public String getFirstName() {
         return firstName;
@@ -58,11 +57,11 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -90,5 +89,16 @@ public class Person {
         this.zip = zip;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone=" + phone +
+                ", mail='" + mail + '\'' +
+                ", address='" + address + '\'' +
+                ", zip=" + zip +
+                '}';
+    }
 }
