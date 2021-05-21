@@ -21,8 +21,8 @@
     </li>
     <li><a href="#">Browse Cars</a>
       <ul>
-        <li><a href="">Reserve Cars</a> </li>
-        <li><a href="">Rented Cars</a> </li>
+        <li><a href="/showCars">Reserve Cars</a> </li>
+        <li><a href="/showContracts">Rented Cars</a> </li>
       </ul>
     </li>
     <li><a href="#">Statistic</a>
@@ -52,7 +52,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="cars: ${Cars}">
+  <tr th:each="Cars: ${carslist}">
     <td th:text="${Cars.id}" />
     <td th:text="${Cars.brand}" />
     <td th:text="${Cars.model}" />
@@ -62,20 +62,7 @@
     <td th:text="${Cars.cleaning}" />
     <td th:text="${Cars.service}"/>
   <td>
-    <!-- Mangler metoder i CarRepo-->
-   <a th:href="EDIT-BIL-METODE">
-    <button class="btn-update" id="btn-update">Edit</button>
-    <a/>
-
-     <a th.href ="@{'deleteCar/' +@{car.id}}">
-      <button class="btn-delete" id="btn-delete">Delete</button>
-    </a>
-    <a th:href="BOOK-BIL-METODE">
-      <button class="btn-book" id="btn-book">Book</button>
-    </a>
-   </a>
-
-
+  </td>
   </tr>
   </tbody>
 </table>

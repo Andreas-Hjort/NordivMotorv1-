@@ -21,8 +21,8 @@
         </li>
         <li><a href="#">Browse Cars</a>
             <ul>
-                <li><a href="">Reserve Cars</a> </li>
-                <li><a href="">Rented Cars</a> </li>
+                <li><a href="/showCars">Reserve Cars</a> </li>
+                <li><a href="/showContracts">Rented Cars</a> </li>
             </ul>
         </li>
         <li><a href="#">Statistic</a>
@@ -51,27 +51,26 @@
         <th>Start kilometer</th>
         <th>End kilometer</th>
         <th>Price</th>
+        <th>ID Pickup</th>
         <th>ID dropoff</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="contracts: ${idcontracts}">
-        <td th:text="${idcustomer}"/>
-        <td th:text="${date_of_reserve}"/>
-        <td th:text="${date_of_handin}"/>
-        <td th:text="${start_kilometer}"/>
-        <td th:text="${end_kilometer}"/>
-        <td th:text="${price}"/>
-        <td th:text="${iddropoff}"/>
+    <tr th:each="contracts: ${contractlist}">
+        <td th:text="${contracts.IDcontract}"/>
+        <td th:text="${contracts.IDcar}"/>
+        <td th:text="${contracts.IDcustomer}"/>
+        <td th:text="${contracts.dateOfReservation}"/>
+        <td th:text="${contracts.dateOfHandIn}"/>
+        <td th:text="${contracts.startOdometer}"/>
+        <td th:text="${contracts.endOdometer}"/>
+        <td th:text="${contracts.price}"/>
+        <td th:text="${contracts.IDPickUp}"/>
+        <td th:text="${contracts.IDdropOff}"/>
         <td>
-            <a th:href="@{}}">
-                <button class="btn-delete" id="btn-delete">Delete</button>
-            </a>
-            <a th:href = "@{}}">
-                <button class="btn-update" id="btn-update">Edit</button>
-            </a>
         </td>
     </tr>
+    </tbody>
 </table>
 </body>
 </html>

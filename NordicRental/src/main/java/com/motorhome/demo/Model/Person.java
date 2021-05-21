@@ -1,13 +1,14 @@
 package com.motorhome.demo.Model;
 
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Person {
 
-    @Id
+   @Id
     private int id;
     private String firstName;
     private String lastName;
@@ -31,14 +32,15 @@ public class Person {
     }
 
 
-    @javax.persistence.Id
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int id){
+        this.id=id;
     }
+
+
 
     public String getFirstName() {
         return firstName;
@@ -87,5 +89,6 @@ public class Person {
     public void setZip(int zip) {
         this.zip = zip;
     }
+
 
 }

@@ -1,8 +1,9 @@
 package com.motorhome.demo.Model;
 
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Dropoff {
@@ -23,7 +24,6 @@ public class Dropoff {
         this.date = date;
     }
 
-    @javax.persistence.Id
     public int getId() {
         return id;
     }

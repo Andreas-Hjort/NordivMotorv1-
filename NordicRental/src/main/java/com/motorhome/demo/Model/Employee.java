@@ -22,7 +22,6 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         this.occupation = occupation;
     }
-    @javax.persistence.Id
 
     public int getID() {
         return ID;

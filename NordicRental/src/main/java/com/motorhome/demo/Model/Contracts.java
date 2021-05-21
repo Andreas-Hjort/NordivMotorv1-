@@ -34,8 +34,6 @@ public class Contracts {
 
     public Contracts(){}
 
-    @javax.persistence.Id
-
     public int getIDcontract() {
         return IDcontract;
     }

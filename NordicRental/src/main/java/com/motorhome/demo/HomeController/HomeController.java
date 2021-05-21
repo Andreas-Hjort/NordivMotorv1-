@@ -1,6 +1,7 @@
 package com.motorhome.demo.HomeController;
 
 import com.motorhome.demo.Model.Cars;
+import com.motorhome.demo.Model.Contracts;
 import com.motorhome.demo.Model.Person;
 import com.motorhome.demo.Service.CarService;
 import com.motorhome.demo.Service.ContractService;
@@ -36,6 +37,9 @@ public class HomeController {
     public String index(Model model) {
         List<Person> customerlist = customerService.fetchALL();
         model.addAttribute("customers", customerlist);
+        for (int i = 0; i < customerlist.size(); i ++){
+            System.out.println(customerlist.get(i));
+        }
         return "home/showCustomer";
     }
 
@@ -47,21 +51,18 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteCustomer(@PathVariable("id") int id){
-        boolean deleted = customerService.deletePerson(id);
-        if (deleted){
-            return "redirect:/";
-        } else {
-            return "redirect:/";
-        }
-    }
-
     @GetMapping("/showCars")
     public String carIndex(Model model) {
         List<Cars> carsList = carService.fetchALL();
-        model.addAttribute("cars", carsList);
+        model.addAttribute("carslist", carsList);
         return "home/showCars";
+    }
+
+    @GetMapping("/showContracts")
+    public String contractsIndex(Model model) {
+        List<Contracts> contractList = contractService.fetchALL();
+        model.addAttribute("contractlist", contractList);
+        return "home/showContracts";
     }
 
 }

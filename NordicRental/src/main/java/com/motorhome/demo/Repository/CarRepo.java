@@ -20,9 +20,10 @@ public class CarRepo {
         RowMapper<Cars> rowMapper = new BeanPropertyRowMapper<>(Cars.class);
         return template.query(sql, rowMapper);
     }
+
      public Cars addCars(Cars c) {
          String sql = "INSERT INTO idcars, brand, model, beds, odometer, status, cleaning, service FROM motorhome.cars";
-         template.update(sql, c.getBeds(), c.getBrand(),c.getCleaning(),c.getId(),c.getModel(),c.getOdometer(),c.getService(),c.getStatus());
+         template.update(sql,c.getId(), c.getBrand(),c.getModel(),c.getBeds(),c.getOdometer(),c.getStatus(),c.getCleaning(),c.getService());
          return null;
      }
      public Boolean deleteCar(int id){

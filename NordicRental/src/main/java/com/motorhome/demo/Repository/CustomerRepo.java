@@ -16,7 +16,7 @@ public class CustomerRepo {
     JdbcTemplate template;
 
     public List<Person> fetchALL(){
-        String sql = "SELECT id_customer, first_name, last_name, phonenumber, mail, address, zip FROM motorhome.customer";
+        String sql = "SELECT * FROM motorhome.customer";
         RowMapper<Person> rowMapper = new BeanPropertyRowMapper<>(Person.class);
         return template.query(sql, rowMapper);
     }

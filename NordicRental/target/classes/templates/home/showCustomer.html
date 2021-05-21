@@ -21,8 +21,8 @@
         </li>
         <li><a href="#">Browse Cars</a>
             <ul>
-                <li><a href="">Reserve Cars</a> </li>
-                <li><a href="">Rented Cars</a> </li>
+                <li><a href="/showCars">Reserve Cars</a> </li>
+                <li><a href="/showContracts">Rented Cars</a> </li>
             </ul>
         </li>
         <li><a href="#">Statistic</a>
@@ -54,14 +54,14 @@
 </tr>
 </thead>
 <tbody>
-<tr th:each="person: ${customers}">
-    <td th:text="${person.id}" />
-    <td th:text="${person.firstName}" />
-    <td th:text="${person.lastName}" />
-    <td th:text="${person.phone}" />
-    <td th:text="${person.mail}" />
-    <td th:text="${person.address}" />
-    <td th:text="${person.zip}" />
+<tr th:each="Person: ${customers}">
+    <td th:text="${Person.id}" />
+    <td th:text="${Person.firstName}" />
+    <td th:text="${Person.lastName}" />
+    <td th:text="${Person.phone}" />
+    <td th:text="${Person.mail}" />
+    <td th:text="${Person.address}" />
+    <td th:text="${Person.zip}" />
     <td>
         <a th:href="@{'/deleteCustomer/'+@{person.id}}">
             <button class="btn-delete" id="btn-delete">Delete</button>
