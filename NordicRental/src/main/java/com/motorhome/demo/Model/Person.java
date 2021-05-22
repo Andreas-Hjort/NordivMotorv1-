@@ -89,16 +89,4 @@ public class Person {
         this.zip = zip;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phone=" + phone +
-                ", mail='" + mail + '\'' +
-                ", address='" + address + '\'' +
-                ", zip=" + zip +
-                '}';
-    }
 }

@@ -1,16 +1,22 @@
 package com.motorhome.demo.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Ekstras {
+
+    @Id
     private int ID;
-    private String name;
+    private String type;
     private double price;
 
 
     public Ekstras(){}
 
-    public Ekstras(int ID, String name, double price) {
+    public Ekstras(int ID, String type, double price) {
         this.ID = ID;
-        this.name = name;
+        this.type = type;
         this.price = price;
     }
 
@@ -22,12 +28,12 @@ public class Ekstras {
         this.ID = ID;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getPrice() {

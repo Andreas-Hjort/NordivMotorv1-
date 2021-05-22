@@ -8,19 +8,25 @@ public class Employee {
 
     @Id
     private int ID;
-    private String firstName;
-    private String lastName;
-    private int phoneNumber;
+    private String first_Name;
+    private String last_Name;
+    private int phone;
+    private String mail;
     private String occupation;
+    private String address;
+    private String zip;
 
     public Employee(){}
 
-    public Employee(int ID, String firstName, String lastName, int phoneNumber, String occupation) {
+    public Employee(int ID, String first_Name, String last_Name, int phone, String mail, String occupation, String address, String zip) {
         this.ID = ID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        this.first_Name = first_Name;
+        this.last_Name = last_Name;
+        this.phone = phone;
+        this.mail = mail;
         this.occupation = occupation;
+        this.address = address;
+        this.zip = zip;
     }
 
     public int getID() {
@@ -31,28 +37,36 @@ public class Employee {
         this.ID = ID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_Name() {
+        return first_Name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_Name(String first_Name) {
+        this.first_Name = first_Name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_Name() {
+        return last_Name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_Name(String last_Name) {
+        this.last_Name = last_Name;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public int getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getOccupation() {
@@ -61,6 +75,22 @@ public class Employee {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }
 
