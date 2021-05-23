@@ -34,4 +34,15 @@ public class ContractRepo {
         String sql = "DELETE FROM motorhome.contracts WHERE idcontract = ?";
         return template.update(sql, id) > 0;
     }
+
+    public Contracts findContractByID(int id){
+        String sqlFindContract = "SELECT * FROM motorhome.contracts WHERE id = ?;";
+        RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
+        Contracts contracts = template.queryForObject(sqlFindContract, rowMapper, id);
+        return contracts;
+    }
+
+    public void updateContract(Contracts contracts, int id){
+
+    }
 }

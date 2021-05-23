@@ -20,8 +20,8 @@ tr:nth-child(odd){
     background-color: dimgray;
 }
 .btn{
-    border: none;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
     padding: 7px 10px;
     text-align: center;
 }
@@ -49,4 +49,30 @@ tr:nth-child(odd){
 #btn-update{
     background: whitesmoke;
     width: 50px;
+}
+
+div.center{
+    position: absolute;
+    top: 6%;
+    left: 0;
+}
+
+div.editContract{
+    height: 250px;
+    width: 300px;
+    border: 1px solid black;
+    margin: auto;
+    padding: 4px;
+    background-color: lightblue;
+    position:absolute;
+    top:6%;
+    right:0;
+}
+.container {
+    width: 250px;
+    clear: both;
+}
+.container input {
+    width: 100%;
+    clear: both;
 }
