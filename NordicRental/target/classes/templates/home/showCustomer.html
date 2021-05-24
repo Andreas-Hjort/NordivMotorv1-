@@ -63,10 +63,10 @@
     <td th:text="${Person.address}" />
     <td th:text="${Person.zip}" />
     <td>
-        <a th:href="@{'/deleteCustomer/'+@{person.id}}">
+        <a th:href="@{'/deleteCustomer/'+${person.id}}">
             <button class="btn-delete" id="btn-delete">Delete</button>
         </a>
-        <a th:href = "@{'/updateCustomer/'+@{person.id}}">
+        <a th:href = "@{'/updateCustomer/'${Person.id}}">
             <button class="btn-update" id="btn-update">Edit</button>
         </a>
     </td>

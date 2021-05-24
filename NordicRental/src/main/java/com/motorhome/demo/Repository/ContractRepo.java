@@ -22,9 +22,9 @@ public class ContractRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Contracts addContract(Contracts c){
-        String sql = "INSERT INTO motorhome.contracts (idcontracts,idcar, idcustomer, date_of_reserve, date_of_handin, start_kilometer, end_kilometer, price, iddropoff";
-        template.update(sql,c.getId(), c.getIDcar(), c.getIDcustomer(), c.getDate_of_Reserve(),
+    public Contracts addContract(Contracts c, int carId ){
+        String sql = "INSERT INTO motorhome.contracts (0, ?, ?, ?, ?, ?, ?, ?, ?";
+        template.update(sql, c.getId(), carId, c.getIDcustomer(), c.getDate_of_Reserve(),
                 c.getDate_of_handIn(), c.getStart_kilometer(),
                 c.getEnd_kilometer(), c.getPrice(), c.getIDdropOff(), c.getIDPickUp() );
         return null;
@@ -35,8 +35,13 @@ public class ContractRepo {
         return template.update(sql, id) > 0;
     }
 
+    public void createContract(int id){
+        String sql = "INSERT INTO motorhome.contracts (idcar) SELECT id FROM motorhome.cars WHERE id = " + id;
+        template.update(sql);
+    }
+
     public Contracts findContractByID(int id){
-        String sqlFindContract = "SELECT * FROM motorhome.contracts WHERE id = ?;";
+        String sqlFindContract = "SELECT * FROM motorhome.contracts WHERE id = ?";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         Contracts contracts = template.queryForObject(sqlFindContract, rowMapper, id);
         return contracts;

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 @Controller
 public class HomeController {
 
@@ -40,8 +42,6 @@ public class HomeController {
         return "home/showCustomer";
     }
 
-    @GetMapping("/create")
-    public String create(){return ("home/createCustomer");}
     @PostMapping
     public String create(@ModelAttribute Person p ){
         customerService.addPerson(p);
@@ -60,6 +60,12 @@ public class HomeController {
         List<Contracts> contractList = contractService.fetchALL();
         model.addAttribute("contractlist", contractList);
         return "home/showContracts";
+    }
+
+    @GetMapping("/reserveCar/{id}")
+    public String addContract(@PathVariable("id") int id){
+        contractService.createContract(id);
+     return "home/createContract";
     }
 
 }
