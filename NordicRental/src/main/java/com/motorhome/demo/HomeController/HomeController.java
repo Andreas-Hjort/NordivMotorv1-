@@ -55,6 +55,13 @@ public class HomeController {
         return "home/showCars";
     }
 
+    @PostMapping
+    public String carIndex(@ModelAttribute Model model){
+      model.addAttribute(carService.Cleaning());
+        return "redirect:/";
+    }
+
+
     @GetMapping("/showContracts")
     public String contractsIndex(Model model) {
         List<Contracts> contractList = contractService.fetchALL();

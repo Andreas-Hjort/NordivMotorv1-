@@ -30,5 +30,9 @@ public class CarRepo {
          String sql = "DELETE FROM motorhome.cars WHERE idcars = ?";
          return template.update(sql, id) > 0;
      }
+     public boolean Cleaning() {
+        String sql = "UPDATE cars SET 'cleaning' = NOT cleaning";
+        return template.update(sql) > 0;
+     }
 
 }

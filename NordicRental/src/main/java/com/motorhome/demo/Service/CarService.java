@@ -24,4 +24,8 @@ public class CarService {
     public Boolean deleteCar(int id) {
         return carRepo.deleteCar(id);
     }
+    public boolean Cleaning() {
+        return carRepo.Cleaning();
+    }
+
 }
