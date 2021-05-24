@@ -21,8 +21,8 @@ public class CustomerService {
         return customerRepo.addCustomer(p);
     }
 
-    public Boolean deletePerson(int id){
-        return customerRepo.deletePerson(id);
+    public Boolean delete(int id){
+        return customerRepo.delete(id);
     }
 
 }

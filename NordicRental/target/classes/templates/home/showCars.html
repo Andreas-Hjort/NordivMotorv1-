@@ -63,14 +63,10 @@
     <td th:text="${Cars.status}" />
     <td th:text="${Cars.cleaning}" />
     <td th:text="${Cars.service}"/>
-    <td>
-      <a th:href="@{'/reserveCar/'+${Cars.id}}">
-        <button class="btn-delete" id="btn-delete">Reserve</button>
-      </a>
-      <a th:href = "@{'/updateCar/'+${Cars.id}}">
-        <button class="btn-update" id="btn-update">Edit</button>
-      </a>
-    </td>
+    <td><button class="btn" >Reserve</button></td>
+    <td><button class="btn">Edit</button></td>
+  <td>
+  </td>
   </tr>
   </tbody>
 </table>

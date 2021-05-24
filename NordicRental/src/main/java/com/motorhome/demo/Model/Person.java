@@ -1,24 +1,27 @@
 package com.motorhome.demo.Model;
 
 
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Person {
 
-
-    @Id
+   @Id
     private int id;
     private String firstName;
     private String lastName;
-    private String phone;
+    private int phone;
     private String mail;
     private String address;
+    private int zip;
 
-    public Person(int id, String firstName, String lastName, String phone, String mail, String address, int zip) {
+    public Person(){
+
+    }
+
+    public Person(int id, String firstName, String lastName, int phone, String mail, String address, int zip){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,10 +31,6 @@ public class Person {
         this.zip = zip;
     }
 
-    private int zip;
-
-    public Person(){
-    }
 
     public int getId() {
         return id;
@@ -57,11 +56,11 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 

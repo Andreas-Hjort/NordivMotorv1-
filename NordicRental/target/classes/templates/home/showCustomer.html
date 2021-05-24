@@ -62,15 +62,20 @@
     <td th:text="${Person.mail}" />
     <td th:text="${Person.address}" />
     <td th:text="${Person.zip}" />
-    <td>
-        <a th:href="@{'/deleteCustomer/'+${person.id}}">
-            <button class="btn-delete" id="btn-delete">Delete</button>
-        </a>
-        <a th:href = "@{'/updateCustomer/'${Person.id}}">
-            <button class="btn-update" id="btn-update">Edit</button>
-        </a>
+    <td th:button/>
+
+<form action="/deleteCustomer" method="post">
+        <select name="deleteid">
+            <option th:each="Person: ${customers}" th:value="${Person.id}" th:text="${Person.id}"/>
+        </select>
+    <button type="submit">Delete</button>
+</form>
     </td>
-    </tr>
+</tbody>
+</tr>
+</table>
+</div>
+</tbody>
 </table>
 </body>
 </html>

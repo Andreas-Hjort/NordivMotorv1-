@@ -9,14 +9,9 @@ import com.motorhome.demo.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 @Controller
 public class HomeController {
@@ -42,6 +37,8 @@ public class HomeController {
         return "home/showCustomer";
     }
 
+    @GetMapping("/create")
+    public String create(){return ("home/createCustomer");}
     @PostMapping
     public String create(@ModelAttribute Person p ){
         customerService.addPerson(p);
@@ -55,12 +52,6 @@ public class HomeController {
         return "home/showCars";
     }
 
-    @PostMapping
-    public String carIndex(@ModelAttribute Model model){
-      model.addAttribute(carService.Cleaning());
-        return "redirect:/";
-    }
-
 
     @GetMapping("/showContracts")
     public String contractsIndex(Model model) {
@@ -68,11 +59,17 @@ public class HomeController {
         model.addAttribute("contractlist", contractList);
         return "home/showContracts";
     }
-
-    @GetMapping("/reserveCar/{id}")
-    public String addContract(@PathVariable("id") int id){
-        contractService.createContract(id);
-     return "home/createContract";
+    @GetMapping("/deleteCustomer")
+    public String deletePerson(Model model){
+        List<Person> PersonList = customerService.fetchALL();
+        model.addAttribute("PersonList", PersonList);
+        return "Home/showCustomer";
     }
-
+    @PostMapping("/deleteCustomer")
+    public String deleteCustomer(@RequestParam("deleteid") int delete){
+        customerService.delete(delete);
+        return "redirect:/";
+    }
 }
+
+

@@ -5,7 +5,6 @@
     <title>Title</title>
     <link href="../MyCSS.css" rel="stylesheet" type="text/css">
     <link href="../style.css" rel="stylesheet" type="text/css">
-    <link href="../createStyle.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -40,7 +39,7 @@
 
     </ul>
 </nav>
-<div class="center">
+
 <table>
     <thead>
     <tr>
@@ -54,7 +53,6 @@
         <th>Price</th>
         <th>ID Pickup</th>
         <th>ID dropoff</th>
-        <th>Buttons</th>
     </tr>
     </thead>
     <tbody>
@@ -69,115 +67,10 @@
         <td th:text="${contracts.price}"/>
         <td th:text="${contracts.IDPickUp}"/>
         <td th:text="${contracts.IDdropOff}"/>
-        <td><button class="btn">End rental</button></td>
+        <td>
+        </td>
     </tr>
     </tbody>
 </table>
-</div>
-<div class ="editContract" >
-    <form action ="" method="post">
-                <h1>Edit Contract</h1>
-                <label for="contractID"><i class="fa fa-user"></i> Contract ID</label>
-                <input type="text" id="contractID" name="contract-ID" placeholder="Enter contract ID">
-                <br />
-                <label for="carID"><i class="fa-lastmame"></i> Car ID</label>
-                <input type="text" id="carID" name="carID" placeholder="Enter car ID">
-                <br />
-                <label for="idCustomer"><i class="fa fa-envelope"></i> Customer ID</label>
-                <input type="text" id="idCustomer" name="idCustomer" placeholder="Enter customer ID">
-                <br />
-                <label for="dateOfReserve"><i class="fa fa-address-card-o"></i> Date of reservation</label>
-                <input type="text" id="dateOfReserve" name="dateOfRes" placeholder="Enter date of reservation like '2020-05-05'">
-                <br />
-                <label for="dateOfHandIn"><i class="fa fa-institution"></i> Date of hand-in</label>
-                <input type="text" id="dateOfHandIn" name="dateOfHand" placeholder="Enter date of hand-in like '2020-05-05'">
-                <br />
-                <label for="startkm"><i class="fa fa-institution"></i> Start odometer</label>
-                <input type="text" id="startkm" name="startKM" placeholder="Enter start km.">
-                <br />
-                <label for="endkm"><i class="fa fa-institution"></i> End odometer</label>
-                <input type="text" id="endkm" name="endKM" placeholder="Enter end km.">
-                <br />
-                <label for="price"><i class="fa fa-institution"></i> Price</label>
-                <input type="text" id="price" name="price" placeholder="Enter price for rental">
-                <br />
-                <label for="idPickUp"><i class="fa fa-institution"></i> Pick up ID</label>
-                <input type="text" id="idPickUp" name="pickUpID" placeholder="Enter ID of pickup destination">
-                <br />
-                <label for="idDropOff"><i class="fa fa-institution"></i> Drop off ID</label>
-                <input type="text" id="idDropOff" name="dropOffID" placeholder="Enter ID of dropoff destination">
-                <input type="submit" value="Confirm">
-
-        <!--<div id = "right">
-            <div class = "container">
-                <h1>Rental specifikations</h1>
-                <label for="dateOfRental"><i class="fa fa-user"></i> Date of rental</label>
-                <input type="text" id="dateOfRental" name="daeofrental" placeholder="2020/12/23" required>
-                <label for="dateOfhandin"><i class="fa fa-user"></i> Date of Hand in</label>
-                <input type="text" id="dateOfhandin" name="date" placeholder="2021/1/23" required>
-                <input type="submit" value="Confirm">
-                <br />
-            </div>--->
-    </form>
-</div>
-
-
-
-
-<!---- Virker ikke umiddelbart...
-
-<h1>Update contract</h1>
-<form th:href="@{'/editContract/'+${contractlist}}" method="post">
-    <label>ID</label>
-    <br>
-    <input type="text" th:value="${contracts.id}"/>
-    <br><br>
-
-    <label>ID car</label>
-    <br>
-    <input type="type" th:value="${contracts.IDcar}"/>
-    <br><br>
-
-    <label>ID customer</label>
-    <br>
-    <input type="text" th:value="${contracts.IDcustomer}">
-    <br><br>
-
-    <label>Date of reserve</label>
-    <br>
-    <input type="text" th:value="${contracts.date_of_Reserve}">
-    <br><br>
-
-    <label>Date of hand-in</label>
-    <br>
-    <input type="text" th:value="${contracts.date_of_handIn}">
-    <br><br>
-
-    <label>Start kilometer</label>
-    <br>
-    <input type="text" th:value="${contracts.start_kilometer}">
-    <br><br>
-
-    <label>End kilometer</label>
-    <br>
-    <input type="text" th:value="${contracts.end_kilometer}">
-    <br><br>
-
-    <label>Price</label>
-    <br>
-    <input type="text" th:value="${contracts.price}">
-    <br><br>
-
-    <label>ID Pick Up</label>
-    <br>
-    <input type="text" th:value="${contracts.IDPickUp}">
-    <br><br>
-
-    <label>ID Drop Off</label>
-    <br>
-    <input type="text" th:value="${contracts.IDdropOff}">
-
-</form>
---->
 </body>
 </html>
