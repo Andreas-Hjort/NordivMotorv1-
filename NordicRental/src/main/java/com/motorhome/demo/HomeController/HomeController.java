@@ -26,7 +26,7 @@ public class HomeController {
     CarService carService;
 
     @GetMapping("/")
-    public String frontpage(){
+    public String frontpage() {
         return "home/index";
     }
 
@@ -36,17 +36,21 @@ public class HomeController {
         model.addAttribute("customers", customerlist);
         return "home/showCustomer";
     }
+
     @GetMapping("/cleaning/{id}")
-    public String changeCleaning(@PathVariable("id") int id){
+    public String changeCleaning(@PathVariable("id") int id) {
         carService.Cleaning(id);
         return "redirect:/showCars";
     }
 
 
     @GetMapping("/create")
-    public String create(){return ("home/createCustomer");}
+    public String create() {
+        return ("home/createCustomer");
+    }
+
     @PostMapping
-    public String create(@ModelAttribute Person p ){
+    public String create(@ModelAttribute Person p) {
         customerService.addPerson(p);
         return "redirect:/";
     }
@@ -59,25 +63,19 @@ public class HomeController {
     }
 
 
-
     @GetMapping("/showContracts")
     public String contractsIndex(Model model) {
         List<Contracts> contractList = contractService.fetchALL();
         model.addAttribute("contractlist", contractList);
         return "home/showContracts";
     }
-    @GetMapping("/deleteCustomer")
-    public String deletePerson(Model model){
-        List<Person> PersonList = customerService.fetchALL();
-        model.addAttribute("PersonList", PersonList);
-        return "Home/showCustomer";
+
+    @GetMapping("/delete/{id}")
+    public String deleteCustomer(@PathVariable("id") int id){
+        customerService.delete(id);
+        return "redirect:/showCustomer";
     }
 
-    @PostMapping("/deleteCustomer")
-    public String deleteCustomer(@RequestParam("deleteid") int delete){
-        customerService.delete(delete);
-        return "redirect:/";
-    }
 
     @GetMapping("/reserveCar/{id}")
     public String addContract(@PathVariable("id") int id){

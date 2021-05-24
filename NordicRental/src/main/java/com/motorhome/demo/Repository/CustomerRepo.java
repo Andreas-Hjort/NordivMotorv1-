@@ -29,6 +29,6 @@ public class CustomerRepo {
 
     public Boolean delete(int id){
         String sql = "DELETE FROM motorhome.customer WHERE id = ?";
-        return template.update(sql, id) < 0;
+        return template.update(sql, id) > 0;
     }
 }

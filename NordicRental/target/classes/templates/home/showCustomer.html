@@ -64,16 +64,12 @@
     <td th:text="${Person.zip}" />
     <td th:button/>
 
-<form action="/deleteCustomer" method="post">
-        <select name="deleteid">
-            <option th:each="Person: ${customers}" th:value="${Person.id}" th:text="${Person.id}"/>
-        </select>
-    <button type="submit">Delete</button>
-</form>
+    <a th:href = "@{'/delete/'+${Person.id}}">
+          <button class="btn-delete" id="btn-delete">Delete</button>
+        </a>
     </td>
 </tr>
 </tbody>
-
 </table>
 </div>
 </tbody>
