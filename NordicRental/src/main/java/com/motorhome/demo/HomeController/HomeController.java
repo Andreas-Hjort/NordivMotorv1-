@@ -36,6 +36,12 @@ public class HomeController {
         model.addAttribute("customers", customerlist);
         return "home/showCustomer";
     }
+    @GetMapping("/cleaning/{id}")
+    public String changeCleaning(@PathVariable("id") int id){
+        carService.Cleaning(id);
+        return "redirect:/showCars";
+    }
+
 
     @GetMapping("/create")
     public String create(){return ("home/createCustomer");}
@@ -53,6 +59,7 @@ public class HomeController {
     }
 
 
+
     @GetMapping("/showContracts")
     public String contractsIndex(Model model) {
         List<Contracts> contractList = contractService.fetchALL();
@@ -65,11 +72,19 @@ public class HomeController {
         model.addAttribute("PersonList", PersonList);
         return "Home/showCustomer";
     }
+
     @PostMapping("/deleteCustomer")
     public String deleteCustomer(@RequestParam("deleteid") int delete){
         customerService.delete(delete);
         return "redirect:/";
     }
+
+    @GetMapping("/reserveCar/{id}")
+    public String addContract(@PathVariable("id") int id){
+        contractService.createContract(id);
+        return "home/createContract";
+    }
+
 }
 
 

@@ -31,4 +31,8 @@ public class ContractService {
         contractRepo.createContract(id);
     }
 
+    public Contracts findcontractid(int id){
+        return contractRepo.findContractByID(id);
+    }
+
 }

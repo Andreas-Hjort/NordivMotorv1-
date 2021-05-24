@@ -10,8 +10,8 @@ public class Person {
 
    @Id
     private int id;
-    private String firstName;
-    private String lastName;
+    private String first_Name;
+    private String last_Name;
     private int phone;
     private String mail;
     private String address;
@@ -23,8 +23,8 @@ public class Person {
 
     public Person(int id, String firstName, String lastName, int phone, String mail, String address, int zip){
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.first_Name = firstName;
+        this.last_Name = lastName;
         this.phone = phone;
         this.mail = mail;
         this.address = address;
@@ -41,19 +41,19 @@ public class Person {
     }
 
     public String getFirstName() {
-        return firstName;
+        return first_Name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.first_Name = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return last_Name;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.last_Name = lastName;
     }
 
     public int getPhone() {

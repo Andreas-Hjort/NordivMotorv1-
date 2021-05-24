@@ -22,17 +22,17 @@ public class CarRepo {
     }
 
      public Cars addCars(Cars c) {
-         String sql = "INSERT INTO idcars, brand, model, beds, odometer, status, cleaning, service FROM motorhome.cars";
+         String sql = "INSERT INTO motorhome.cars VALUES (id, brand, model, beds, odometer, status, cleaning, service)";
          template.update(sql,c.getId(), c.getBrand(),c.getModel(),c.getBeds(),c.getOdometer(),c.getStatus(),c.getCleaning(),c.getService());
          return null;
      }
      public Boolean deleteCar(int id){
-         String sql = "DELETE FROM motorhome.cars WHERE idcars = ?";
+         String sql = "DELETE FROM motorhome.cars WHERE id = ?";
          return template.update(sql, id) > 0;
      }
-     public boolean Cleaning() {
-        String sql = "UPDATE cars SET 'cleaning' = NOT cleaning";
-        return template.update(sql) > 0;
+     public boolean Cleaning(int id) {
+        String sql = "UPDATE motorhome.cars SET cleaning = NOT cleaning WHERE id = ?";
+        return template.update(sql, id) > 0;
      }
 
 }

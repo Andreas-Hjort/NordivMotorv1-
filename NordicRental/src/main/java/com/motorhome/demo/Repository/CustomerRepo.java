@@ -16,7 +16,7 @@ public class CustomerRepo {
     JdbcTemplate template;
 
     public List<Person> fetchALL(){
-        String sql = "SELECT * FROM customer";
+        String sql = "SELECT * FROM motorhome.customer";
         RowMapper<Person> rowMapper = new BeanPropertyRowMapper<>(Person.class);
         return template.query(sql, rowMapper);
     }
@@ -28,7 +28,7 @@ public class CustomerRepo {
     }
 
     public Boolean delete(int id){
-        String sql = "DELETE FROM customer WHERE id = ?";
+        String sql = "DELETE FROM motorhome.customer WHERE id = ?";
         return template.update(sql, id) < 0;
     }
 }
