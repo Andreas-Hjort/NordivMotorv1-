@@ -67,6 +67,11 @@
         <td th:text="${contracts.price}"/>
         <td th:text="${contracts.IDPickUp}"/>
         <td th:text="${contracts.IDdropOff}"/>
+        <td th:button/>
+
+        <a th:href = "@{'/deleteContract/'+${contracts.id}}">
+            <button class="btn-delete" id="btn-delete">Delete</button>
+        </a>
         <td>
         </td>
     </tr>
