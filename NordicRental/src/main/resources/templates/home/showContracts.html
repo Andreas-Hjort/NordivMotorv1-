@@ -45,8 +45,11 @@
         <thead>
         <tr>
             <th>Contract ID</th>
-            <th>Car ID</th>
-            <th>Customer ID</th>
+            <th>Car brand</th>
+            <th>Car model</th>
+            <th>Car type</th>
+            <th>First name</th>
+            <th>Last name</th>
             <th>Date of reservation</th>
             <th>Date of hand in</th>
             <th>Start kilometer</th>
@@ -60,8 +63,11 @@
         <tbody>
         <tr th:each="contracts: ${contractlist}">
             <td th:text="${contracts.id}"/>
-            <td th:text="${contracts.IDcar}"/>
-            <td th:text="${contracts.IDcustomer}"/>
+            <td th:text="${contracts.brand}"/>
+            <td th:text="${contracts.model}"/>
+            <td th:text="${contracts.type}"/>
+            <td th:text="${contracts.first_Name}"/>
+            <td th:text="${contracts.last_Name}"/>
             <td th:text="${contracts.date_of_Reserve}"/>
             <td th:text="${contracts.date_of_handIn}"/>
             <td th:text="${contracts.start_kilometer}"/>

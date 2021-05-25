@@ -17,7 +17,7 @@ public class ContractRepo {
     JdbcTemplate template;
 
     public List<Contracts> fetchALL(){
-        String sql = "SELECT * FROM motorhome.contracts";
+        String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id = contracts.idcar JOIN motorhome.customer ON idcustomer = customer.id";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         return template.query(sql, rowMapper);
     }

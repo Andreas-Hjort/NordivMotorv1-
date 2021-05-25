@@ -18,6 +18,52 @@ public class Contracts {
     private String IDPickUp;
     private String IDdropOff;
 
+    private String first_Name;
+    private String last_Name;
+    private String model;
+    private String brand;
+    private String type;
+
+    public String getFirst_Name() {
+        return first_Name;
+    }
+
+    public void setFirst_Name(String first_Name) {
+        this.first_Name = first_Name;
+    }
+
+    public String getLast_Name() {
+        return last_Name;
+    }
+
+    public void setLast_Name(String last_Name) {
+        this.last_Name = last_Name;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Contracts(){}
 
     public int getId() {
