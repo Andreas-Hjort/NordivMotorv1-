@@ -1,7 +1,7 @@
 
 #wrapperContact{
-    height: 450px;
-    width: 900px;
+    height: 550px;
+    width: 500px;
     border: 1px solid black;
     margin: auto;
     padding: 4px;
@@ -35,7 +35,7 @@ div.editContract{
     padding: 4px;
     background-color: lightblue;
     position:absolute;
-    top:11%;
-    right:0;
+    top:9.1%;
+    right:0.5%;
 }
 

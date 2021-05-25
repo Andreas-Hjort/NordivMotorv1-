@@ -53,22 +53,12 @@ tr:nth-child(odd){
 
 div.center{
     position: relative;
-    top: 11%;
-    left: 0;
+    top: 100%;
+    right: 10%;
+    z-index: 2;
 }
 
-div.editContract{
-    height: 250px;
-    width: 300px;
-    border: 1px solid black;
-    margin: auto;
-    padding: 4px;
-    background-color: lightblue;
-    opacity: 0.7;
-    position:relative;
-    top:11%;
-    right:0;
-}
+
 .container {
     width: 250px;
     clear: both;

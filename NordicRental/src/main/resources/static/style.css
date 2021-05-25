@@ -12,6 +12,7 @@ nav {
     width: 100%;
     height: 55px;
     background-color: white;
+    position: relative;
 }
 /* Title of the website */
 nav p {
@@ -22,6 +23,7 @@ nav p {
     float: left;
     padding: 10px 20px;
     background-color: lightblue;
+    position: relative;
 }
 nav ul {
     float: left;
@@ -32,6 +34,7 @@ nav ul {
 nav ul li {
     float: left;
     list-style: none;
+    position: relative;
 }
 /* Gives spacing between buttons, and a letter type + size */
 nav ul li a {
@@ -41,6 +44,7 @@ nav ul li a {
     font-size: 14px;
     padding: 21px 14px;
     text-decoration: none;
+    position: relative;
 }
 /* Dropdown menu box with edges */
 nav ul li ul {
@@ -53,18 +57,22 @@ nav ul li ul {
 }
 nav ul li:hover ul {
     display: block;
+    position: relative;
 
 }
 nav ul li ul li  {
     width: 180px;
     border-radius: 4px;
+    position: relative;
 
 }
 nav ul li ul li a {
     padding: 8px 14px;
+    position: relative;
 }
 nav ul li ul li a:hover {
     background-color: lightblue;
     width: 150px;
+    position: relative;
 }
 
