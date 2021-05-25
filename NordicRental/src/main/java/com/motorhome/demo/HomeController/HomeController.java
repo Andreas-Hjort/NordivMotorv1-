@@ -49,10 +49,10 @@ public class HomeController {
         return ("home/createCustomer");
     }
 
-    @PostMapping
+    @PostMapping("/submitCustomer")
     public String create(@ModelAttribute Person p) {
         customerService.addPerson(p);
-        return "redirect:/";
+        return "redirect:/showCustomer";
     }
 
     @GetMapping("/showCars")

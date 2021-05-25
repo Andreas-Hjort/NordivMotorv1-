@@ -50,18 +50,22 @@
     <th>Mail</th>
     <th>address</th>
     <th>Zip</th>
+    <th>License Number</th>
+    <th>License Date</th>
     <th>Buttons</th>
 </tr>
 </thead>
 <tbody>
 <tr th:each="Person: ${customers}">
     <td th:text="${Person.id}" />
-    <td th:text="${Person.firstName}" />
-    <td th:text="${Person.lastName}" />
+    <td th:text="${Person.first_Name}" />
+    <td th:text="${Person.last_Name}" />
     <td th:text="${Person.phone}" />
     <td th:text="${Person.mail}" />
     <td th:text="${Person.address}" />
     <td th:text="${Person.zip}" />
+    <td th:text="${Person.licensenr}" />
+    <td th:text="${Person.licensedate}" />
     <td th:button/>
 
     <a th:href = "@{'/delete/'+${Person.id}}">

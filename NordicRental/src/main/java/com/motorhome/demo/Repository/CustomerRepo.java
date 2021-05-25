@@ -22,8 +22,8 @@ public class CustomerRepo {
     }
 
     public Person addCustomer(Person p){
-        String sql = "INSERT INTO motorhome.customer (first_name, last_name, phonenumber, mail, address, zip";
-        template.update(sql, p.getFirstName(),p.getLastName(), p.getPhone(), p.getMail(), p.getAddress(), p.getZip());
+        String sql = "INSERT INTO motorhome.customer VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        template.update(sql, p.getId(), p.getFirst_Name(),p.getLast_Name(), p.getPhone(), p.getMail(), p.getAddress(), p.getZip(), p.getLicensenr(), p.getLicensedate());
         return null;
     }
 
