@@ -83,6 +83,19 @@ public class HomeController {
         return "home/createContract";
     }
 
+
+    @GetMapping("/deleteContract/{id}")
+    public String deleteContract(@PathVariable("id") int id){
+        contractService.deleteContract(id);
+        return "redirect:/showContracts";
+    }
+
+    /**@GetMapping("/findContractByID/{id}")
+    public String findContrByID(@PathVariable("id") int id) {
+        contractService.findcontractid(id);
+        return "home/showContracts";
+    }**/
+
 }
 
 

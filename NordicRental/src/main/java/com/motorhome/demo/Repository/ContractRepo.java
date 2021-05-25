@@ -31,7 +31,7 @@ public class ContractRepo {
     }
 
     public Boolean deleteContract(int id){
-        String sql = "DELETE FROM motorhome.contracts WHERE idcontract = ?";
+        String sql = "DELETE FROM motorhome.contracts WHERE id = ?";
         return template.update(sql, id) > 0;
     }
 

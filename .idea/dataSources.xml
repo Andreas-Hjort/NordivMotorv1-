@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@127.0.0.1" uuid="d7b24b84-3297-48cf-8e24-224ad1779505">
+    <data-source source="LOCAL" name="@127.0.0.1" uuid="9a8a9a64-1e73-4f9c-a0d6-6ee82d850b12">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1:3306/</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="@127.0.0.1 [2]" uuid="38395f94-6f9f-455e-8488-64a2ee98dfc9">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="serverTimezone" value="GMT" />
+      </driver-properties>
     </data-source>
   </component>
 </project>
