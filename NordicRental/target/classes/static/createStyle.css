@@ -27,4 +27,15 @@
     float: left;
 }
 
+div.editContract{
+    height: 500px;
+    width: 300px;
+    border: 1px solid black;
+    margin: auto;
+    padding: 4px;
+    background-color: lightblue;
+    position:absolute;
+    top:11%;
+    right:0;
+}
 
