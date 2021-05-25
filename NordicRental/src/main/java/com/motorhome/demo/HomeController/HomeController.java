@@ -71,31 +71,25 @@ public class HomeController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteCustomer(@PathVariable("id") int id){
+    public String deleteCustomer(@PathVariable("id") int id) {
         customerService.delete(id);
         return "redirect:/showCustomer";
     }
 
 
     @GetMapping("/reserveCar/{id}")
-    public String addContract(@PathVariable("id") int id){
+    public String addContract(@PathVariable("id") int id) {
         contractService.createContract(id);
         return "home/createContract";
     }
 
-
     @GetMapping("/deleteContract/{id}")
-    public String deleteContract(@PathVariable("id") int id){
+    public String deleteContract(@PathVariable("id") int id) {
         contractService.deleteContract(id);
         return "redirect:/showContracts";
+
+
     }
-
-    /**@GetMapping("/findContractByID/{id}")
-    public String findContrByID(@PathVariable("id") int id) {
-        contractService.findcontractid(id);
-        return "home/showContracts";
-    }**/
-
 }
 
 
