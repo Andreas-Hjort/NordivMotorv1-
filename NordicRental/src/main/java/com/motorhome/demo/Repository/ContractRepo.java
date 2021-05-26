@@ -22,9 +22,9 @@ public class ContractRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Contracts addContract(Contracts c, int carId ){
+    public Contracts addContract(Contracts c){
         String sql = "INSERT INTO motorhome.contracts (0, ?, ?, ?, ?, ?, ?, ?, ?";
-        template.update(sql, c.getId(), carId, c.getIDcustomer(), c.getDate_of_Reserve(),
+        template.update(sql, c.getId(), c.getIDcar(), c.getIDcustomer(), c.getDate_of_Reserve(),
                 c.getDate_of_handIn(), c.getStart_kilometer(),
                 c.getEnd_kilometer(), c.getPrice(), c.getIDdropOff(), c.getIDPickUp() );
         return null;
