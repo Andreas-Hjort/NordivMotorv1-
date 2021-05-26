@@ -28,6 +28,10 @@ public class Contracts {
     private String brand;
     private String type;
 
+
+    public Contracts(){}
+
+
     public String getFirst_Name() {
         return first_Name;
     }
@@ -67,8 +71,6 @@ public class Contracts {
     public void setType(String type) {
         this.type = type;
     }
-
-    public Contracts(){}
 
     public int getId() {
         return id;
@@ -142,11 +144,15 @@ public class Contracts {
         this.IDPickUp = IDPickUp;
     }
 
-    public int getidekstra() {
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getIDekstra() {
         return IDekstra;
     }
 
-    public void setIDekstra(String IDeksta) {
+    public void setIDekstra(int IDekstra) {
         this.IDekstra = IDekstra;
     }
 }
