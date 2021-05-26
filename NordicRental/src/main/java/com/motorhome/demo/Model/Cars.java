@@ -27,13 +27,14 @@ public class Cars {
         this.id = id;
         this.brand = brand;
         this.model = model;
+        this.type = type;
         this.beds = beds;
         this.odometer = odometer;
         this.price = price;
         this.status = status;
         this.cleaning = cleaning;
         this.service = service;
-        this.type = type;
+
     }
 
     public double getPrice() {

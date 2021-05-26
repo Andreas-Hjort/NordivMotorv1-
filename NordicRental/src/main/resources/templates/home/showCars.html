@@ -112,7 +112,7 @@
     <td th:text="${Cars.cleaning}" />
     <td th:text="${Cars.service}"/>
     <td>
-    <a th:href="@{'/reserveCar/'+${Cars.id}}">
+    <a href="/reserveCar">
       <button class="btn-delete" id="btn-delete">Reserve</button>
     </a>
     <a th:href = "@{'/cleaning/'+${Cars.id}}">

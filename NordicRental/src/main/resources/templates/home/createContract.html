@@ -38,49 +38,18 @@
 
     </ul>
 </nav>
-<th><br>Create Contract<br><br>
-</th>
-</tr>
 
-<tr>
-    <td>
-        <form action="/createContract" th:object="${Contracts}" method="post">
-            <br>
-            <label>First name</label>
-            <br>
-            <input type="text" name="first_name">
-            <br><br>
-            <label>Last name</label>
-            <br>
-            <input type="text" name="last_name">
-            <br><br>
-            <label>Email</label>
-            <br>
-            <input type="text" name="email">
-            <br><br>
-
-            <div id="address" th:object="${}">
-                <label>Address</label>
-                <br>
-                <input type="text" name="address">
-                <br><br>
-                <label>Phone</label>
-                <br>
-                <input type="number" name="phone">
-                <br><br>
-                <label>Zip code</label>
-                <br>
-                <input type="number" name="zip_code">
-                <br><br>
-            </div>
-
-
-            <br><br>
-        </form>
-
-    </td>
-</tr>
-</table>
-</div>
+<h1>Opret reservation</h1>
+<form action="/reservations/create" id="form" method="post">
+    <table>
+        <tr>
+            <td><label>Autocamper</label></td>
+            <td><select name="motorhome_id">
+                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} " th:value="${cars.id}"></option>
+            </select>
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

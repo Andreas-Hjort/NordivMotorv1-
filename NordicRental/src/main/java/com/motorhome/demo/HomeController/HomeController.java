@@ -99,6 +99,19 @@ public class HomeController {
         return "redirect:/showCars";
     }
 
+    @GetMapping("/reserveCar")
+    public String reserveCar(Model model) {
+        List<Cars> cars =carService.fetchALL();
+        model.addAttribute("carslist", cars);
+        return ("home/createContract");
+    }
+
+    @PostMapping("/submitcontract")
+    public String submitContract(Contracts c) {
+        contractService.addContract(c);
+        return "redirect:/showCustomer";
+    }
+
 }
 
 
