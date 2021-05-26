@@ -60,11 +60,12 @@ public class HomeController {
     }
 
     @GetMapping("/showCars")
-    public String carIndex(Model model) {
+    public String carIndex(Model model, Contracts c) {
         List<Cars> carsList = carService.fetchALL();
         model.addAttribute("carslist", carsList);
         return "home/showCars";
     }
+
 
 
     @GetMapping("/showContracts")
@@ -102,13 +103,20 @@ public class HomeController {
     @GetMapping("/reserveCar")
     public String reserveCar(Model model) {
         List<Cars> cars =carService.fetchALL();
+        List <Person> person = customerService.fetchALL();
         model.addAttribute("carslist", cars);
+        model.addAttribute(("contracts"), new Contracts());
+        model.addAttribute("personlist", person);
         return ("home/createContract");
     }
 
     @PostMapping("/submitcontract")
-    public String submitContract(Contracts c) {
-        contractService.addContract(c);
+    public String submitContract(Contracts contracts, Model model) {
+        List<Cars> cars = carService.fetchALL();
+        model.addAttribute(("contracts"), contracts);
+        model.addAttribute("carslist", cars);
+
+        contractService.addContract(contracts);
         return "redirect:/showCustomer";
     }
 
