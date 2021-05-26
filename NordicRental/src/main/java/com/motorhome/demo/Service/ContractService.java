@@ -20,7 +20,8 @@ public class ContractService {
         return contractRepo.fetchALL();
     }
 
-    public Contracts addContract(Contracts c, int carId){ return contractRepo.addContract(c, carId);
+    public void addContract(Contracts c){
+        contractRepo.addContract(c);
     }
 
     public Boolean deleteContract(int id){
