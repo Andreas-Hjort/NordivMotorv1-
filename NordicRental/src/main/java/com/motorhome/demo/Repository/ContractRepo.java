@@ -1,13 +1,13 @@
 package com.motorhome.demo.Repository;
 
 import com.motorhome.demo.Model.Contracts;
-import com.motorhome.demo.Model.Ekstras;
 import com.motorhome.demo.Model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import com.motorhome.demo.Utilities.DateCalc;
 
 import java.util.List;
 
@@ -23,12 +23,16 @@ public class ContractRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Contracts addContract(Contracts c, int carId ){
+    public void addContract(Contracts c){
         String sql = "INSERT INTO motorhome.contracts (0, ?, ?, ?, ?, ?, ?, ?, ?";
-        template.update(sql, c.getId(), c.getIDcustomer(), c.getDate_of_Reserve(),
-                c.getDate_of_handIn(), c.getStart_kilometer(),
-                c.getEnd_kilometer(), c.getPrice(), c.getIDdropOff(), c.getIDPickUp() );
-        return null;
+        String start_date = DateCalc.fixDateFormatting(c.getDate_of_Reserve());
+        String end_date = DateCalc.fixDateFormatting(c.getDate_of_handIn());
+        String season = calculateSeason(c.getDate_of_Reserve());
+
+
+        template.update(sql, c.getId(), c.getIDcar(), c.getIDcustomer(), start_date,
+               end_date, c.getStart_kilometer(),
+                c.getEnd_kilometer(), season, c.getIDPickUp(), c.getidekstra());
     }
 
     public Boolean deleteContract(int id){
@@ -52,7 +56,27 @@ public class ContractRepo {
 
     }
 
-
-    public void addContract(Contracts c) {
+    public String calculateSeason(String date) {
+        int month = Integer.parseInt(date.substring(5, 7));
+        switch(month) {
+            case 12:
+            case 1:
+            case 2:
+                return "Lavsæson";
+            case 3:
+            case 4:
+            case 5:
+            case 9:
+            case 10:
+            case 11:
+                return "Mellemsæson";
+            case 6:
+            case 7:
+            case 8:
+                return "Højsæson";
+            default:
+                break;
+        }
+        return "undefined";
     }
 }

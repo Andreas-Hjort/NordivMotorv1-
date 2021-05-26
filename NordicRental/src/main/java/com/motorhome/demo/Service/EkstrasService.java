@@ -16,9 +16,7 @@ public class EkstrasService {
     public List<Ekstras> fetchAll() {
         return ekstrasRepo.fetchAll();
     }
-    public Ekstras addEkstras (Ekstras e){
-        return ekstrasRepo.addEkstras(e);
-    }
+
     public Ekstras findEkstrasByID(int id) {
         return ekstrasRepo.findEkstrasByID(id);
     }

@@ -21,13 +21,10 @@ public class EkstrasRepo {
         RowMapper<Ekstras> rowMapper = new BeanPropertyRowMapper<Ekstras>(Ekstras.class);
         return template.query(sql, rowMapper);
     }
-    public Ekstras addEkstras(Ekstras e) {
-        String sql = "INSERT INTO motorhome.ekstras (id, price, picnic_tables, beds, chairs, bike_racks, child_seats) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, e.getID(), e.getPrice(), e.getPicnic_tables(), e.getBeds(), e.getBike_racks(), e.getChild_seats());
-        return null;
-    }
+
+
     public Ekstras findEkstrasByID(int id){
-        String sql = "SELECT * FROM motorhome.ekstras WHERE id = ?";
+        String sql = "SELECT * FROM motorhome.ekstras WHERE idekstras = ?";
         RowMapper<Ekstras> rowMapper = new BeanPropertyRowMapper<>(Ekstras.class);
         Ekstras e = template.queryForObject(sql, rowMapper, id);
         return e;

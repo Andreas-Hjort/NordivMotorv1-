@@ -14,12 +14,16 @@ public class Contracts {
     private String date_of_handIn;
     private double start_kilometer;
     private double end_kilometer;
-    private int price;
+    private double price;
     private String IDPickUp;
-    private String IDdropOff;
+    private int IDekstra;
 
+
+    // Fields from Customer
     private String first_Name;
     private String last_Name;
+
+    //Fields from Car
     private String model;
     private String brand;
     private String type;
@@ -122,7 +126,7 @@ public class Contracts {
         this.end_kilometer = end_kilometer;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -138,12 +142,12 @@ public class Contracts {
         this.IDPickUp = IDPickUp;
     }
 
-    public String getIDdropOff() {
-        return IDdropOff;
+    public int getidekstra() {
+        return IDekstra;
     }
 
-    public void setIDdropOff(String IDdropOff) {
-        this.IDdropOff = IDdropOff;
+    public void setIDekstra(String IDeksta) {
+        this.IDekstra = IDekstra;
     }
 }
 
