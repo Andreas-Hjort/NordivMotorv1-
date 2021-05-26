@@ -1,9 +1,11 @@
 package com.motorhome.demo.Service;
 
 import com.motorhome.demo.Model.Contracts;
+import com.motorhome.demo.Model.Ekstras;
 import com.motorhome.demo.Model.Person;
 import com.motorhome.demo.Repository.ContractRepo;
 import com.motorhome.demo.Repository.CustomerRepo;
+import net.bytebuddy.agent.builder.AgentBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +37,6 @@ public class ContractService {
     public Contracts findcontractid(int id){
         return contractRepo.findContractByID(id);
     }
+
 
 }

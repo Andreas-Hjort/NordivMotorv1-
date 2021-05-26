@@ -12,6 +12,7 @@ public class Cars {
     private String model;
     private int beds;
     private int odometer;
+    private double price;
     private Boolean status;
     private Boolean cleaning;
     private Boolean service;
@@ -21,17 +22,25 @@ public class Cars {
     }
 
 
-    public Cars(int id, String brand, String model, int beds, int odometer, Boolean status, Boolean cleaning, Boolean service) {
+    public Cars(int id, String brand, String model, int beds, int odometer, double price, Boolean status, Boolean cleaning, Boolean service) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.beds = beds;
         this.odometer = odometer;
+        this.price = price;
         this.status = status;
         this.cleaning = cleaning;
         this.service = service;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public int getId() {
         return id;

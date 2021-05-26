@@ -1,6 +1,7 @@
 package com.motorhome.demo.Repository;
 
 import com.motorhome.demo.Model.Contracts;
+import com.motorhome.demo.Model.Ekstras;
 import com.motorhome.demo.Model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -22,9 +23,9 @@ public class ContractRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Contracts addContract(Contracts c){
+    public Contracts addContract(Contracts c, int carId ){
         String sql = "INSERT INTO motorhome.contracts (0, ?, ?, ?, ?, ?, ?, ?, ?";
-        template.update(sql, c.getId(), c.getIDcar(), c.getIDcustomer(), c.getDate_of_Reserve(),
+        template.update(sql, c.getId(), c.getIDcustomer(), c.getDate_of_Reserve(),
                 c.getDate_of_handIn(), c.getStart_kilometer(),
                 c.getEnd_kilometer(), c.getPrice(), c.getIDdropOff(), c.getIDPickUp() );
         return null;
@@ -49,5 +50,9 @@ public class ContractRepo {
 
     public void updateContract(Contracts contracts, int id){
 
+    }
+
+
+    public void addContract(Contracts c) {
     }
 }
