@@ -28,5 +28,8 @@ public class CarService {
     public boolean Cleaning(int id) {
         return carRepo.Cleaning(id);
     }
+    public boolean Service(int id) {
+        return carRepo.Service(id);
 
+    }
 }

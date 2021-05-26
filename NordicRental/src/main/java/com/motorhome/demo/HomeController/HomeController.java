@@ -3,9 +3,11 @@ package com.motorhome.demo.HomeController;
 import com.motorhome.demo.Model.Cars;
 import com.motorhome.demo.Model.Contracts;
 import com.motorhome.demo.Model.Person;
+import com.motorhome.demo.Repository.EkstrasRepo;
 import com.motorhome.demo.Service.CarService;
 import com.motorhome.demo.Service.ContractService;
 import com.motorhome.demo.Service.CustomerService;
+import com.motorhome.demo.Service.EkstrasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,9 @@ public class HomeController {
 
     @Autowired
     CarService carService;
+
+    @Autowired
+    EkstrasService ekstrasService;
 
     @GetMapping("/")
     public String frontpage() {
@@ -88,8 +93,13 @@ public class HomeController {
         contractService.deleteContract(id);
         return "redirect:/showContracts";
 
-
     }
+    @GetMapping("/service/{id}")
+    public String changeService(@PathVariable("id") int id){
+        carService.Service(id);
+        return "redirect:/showCars";
+    }
+
 }
 
 

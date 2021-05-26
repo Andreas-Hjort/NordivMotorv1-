@@ -7,8 +7,7 @@ import javax.persistence.Id;
 public class Ekstras {
 
     @Id
-    private int ID;
-    private String type;
+    private int id;
     private double price;
     private int picnic_tables;
     private int beds;
@@ -17,11 +16,12 @@ public class Ekstras {
     private int child_seats;
 
 
-    public Ekstras(){}
+    public Ekstras(){
 
-    public Ekstras(int ID, String type, double price, int picnic_tables, int beds, int chairs, int bike_racks, int child_seats) {
-        this.ID = ID;
-        this.type = type;
+    }
+
+    public Ekstras(int id,  double price, int picnic_tables, int beds, int chairs, int bike_racks, int child_seats) {
+        this.id = id;
         this.price = price;
         this.picnic_tables = picnic_tables;
         this.beds = beds;
@@ -33,19 +33,11 @@ public class Ekstras {
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
     public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        this.id = id;
     }
 
     public double getPrice() {
