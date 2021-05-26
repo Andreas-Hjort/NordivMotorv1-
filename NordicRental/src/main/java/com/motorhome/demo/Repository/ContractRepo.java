@@ -32,7 +32,7 @@ public class ContractRepo {
 
         template.update(sql, c.getId(), c.getIDcar(), c.getIDcustomer(), start_date,
                end_date, c.getStart_kilometer(),
-                c.getEnd_kilometer(), season, c.getIDPickUp(), c.getidekstra());
+                c.getEnd_kilometer(), season, c.getIDPickUp(), c.getIDekstra());
     }
 
     public Boolean deleteContract(int id){
