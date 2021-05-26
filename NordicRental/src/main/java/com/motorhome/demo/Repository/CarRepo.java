@@ -22,8 +22,8 @@ public class CarRepo {
     }
 
     public Cars addCars(Cars c) {
-        String sql = "INSERT INTO motorhome.cars VALUES (id, brand, model, beds, odometer, status, cleaning, service)";
-        template.update(sql, c.getId(), c.getBrand(), c.getModel(), c.getBeds(), c.getOdometer(), c.getStatus(), c.getCleaning(), c.getService());
+        String sql = "INSERT INTO motorhome.cars VALUES (id, brand, type, model, beds, odometer, price, status, cleaning, service)";
+        template.update(sql, c.getId(), c.getBrand(), c.getType(), c.getModel(), c.getBeds(), c.getOdometer(), c.getPrice(), c.getStatus(), c.getCleaning(), c.getService());
         return null;
     }
 
