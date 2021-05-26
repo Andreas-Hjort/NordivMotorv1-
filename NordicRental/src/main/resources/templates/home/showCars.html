@@ -41,12 +41,8 @@
 <table>
   <thead>
   </thead>
-  <form action="" method="post">
+  <form action="addCar" method="post">
     <tr>
-      <th>
-        <label for="carID"><i class="fa fa-user"></i>Car ID</label>
-        <input type="text" id="carID" name="carID" placeholder="Enter brand">
-      </th>
       <th><label for="brand"><i class="fa-lastmame"></i> Car brand</label>
         <input type="text" id="brand" name="brand" placeholder="Enter brand">
       </th>
@@ -67,16 +63,20 @@
         <input type="text" id="odometer" name="odometer" placeholder="Enter amount of km.">
       </th>
       <th>
+        <label for="price"><i class="fa fa-institution"></i> Price</label>
+        <input type="text" id="price" name="price" placeholder="Enter price">
+      </th>
+      <th>
         <label for="status"><i class="fa fa-institution"></i> Status</label>
-        <input type="text" id="status" name="status" placeholder="Enter 0.">
+        <input type="text" id="status" name="status" placeholder="Enter false">
       </th>
       <th>
         <label for="cleaning"><i class="fa fa-institution"></i> Cleaning</label>
-        <input type="text" id="cleaning" name="cleaning" placeholder="Enter 1 if car needs cleaning. 0 if not">
+        <input type="text" id="cleaning" name="cleaning" placeholder="Enter false">
       </th>
       <th>
         <label for="service"><i class="fa fa-institution"></i> Service</label>
-        <input type="text" id="service" name="service" placeholder="Enter 1 if car needs service. 0 if not">
+        <input type="text" id="service" name="service" placeholder="Enter false">
       </th>
       <th>
         <input type="submit" value="Confirm">
@@ -93,11 +93,11 @@
     <th>Type</th>
     <th>Beds</th>
     <th>Odometer</th>
+    <th>Price</th>
     <th>Status</th>
     <th>Needs cleaning</th>
     <th>Needs service</th>
     <th>Buttons</th>
-    <th>More buttons</th>
   </tr>
   </thead>
   <tbody>
@@ -108,6 +108,7 @@
     <td th:text="${Cars.type}" />
     <td th:text="${Cars.beds}" />
     <td th:text="${Cars.odometer}" />
+    <td th:text="${Cars.price}" />
     <td th:text="${Cars.status}" />
     <td th:text="${Cars.cleaning}" />
     <td th:text="${Cars.service}"/>
@@ -122,8 +123,6 @@
         <button class="btn-update" id="btn-create">Service</button>
       </a>
     </td>
-  <td>
-  </td>
   </tr>
   </tbody>
 </table>

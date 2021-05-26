@@ -112,6 +112,12 @@ public class HomeController {
         return "redirect:/showCustomer";
     }
 
+    @PostMapping("/addCar")
+    public String addCar(@ModelAttribute Cars c){
+        carService.addCar(c);
+        return "redirect:/showCars";
+    }
+
 }
 
 

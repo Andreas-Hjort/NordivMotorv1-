@@ -1,7 +1,5 @@
 package com.motorhome.demo.Model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
