@@ -31,6 +31,10 @@ public class Person {
   this.licensedate = licensedate;
  }
 
+ public Person() {
+
+ }
+
  public int getId() {
   return id;
  }
@@ -104,9 +108,7 @@ public class Person {
  }
 
 
- public Person() {
 
- }
 
 
 }

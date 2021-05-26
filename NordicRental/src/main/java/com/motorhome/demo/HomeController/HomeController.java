@@ -3,7 +3,6 @@ package com.motorhome.demo.HomeController;
 import com.motorhome.demo.Model.Cars;
 import com.motorhome.demo.Model.Contracts;
 import com.motorhome.demo.Model.Person;
-import com.motorhome.demo.Repository.EkstrasRepo;
 import com.motorhome.demo.Service.CarService;
 import com.motorhome.demo.Service.ContractService;
 import com.motorhome.demo.Service.CustomerService;
