@@ -126,6 +126,12 @@ public class HomeController {
         return "redirect:/showCars";
     }
 
+    @GetMapping("getContract")
+    public String getContract(@PathVariable("id") int id){
+        contractService.findcontractid(id);
+        return "home/showContracts";
+    }
+
 }
 
 

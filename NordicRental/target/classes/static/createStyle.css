@@ -1,4 +1,3 @@
-
 #wrapperContact{
     height: 550px;
     width: 500px;
@@ -28,7 +27,7 @@
 }
 
 div.editContract{
-    height: 500px;
+    height: 650px;
     width: 300px;
     border: 1px solid black;
     margin: auto;
@@ -37,5 +36,10 @@ div.editContract{
     position:absolute;
     top:9.1%;
     right:0.5%;
+}
+
+table.left{
+    margin-right: 0px;
+    margin-left: auto;
 }
 
