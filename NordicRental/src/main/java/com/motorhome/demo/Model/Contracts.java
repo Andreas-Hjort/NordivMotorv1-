@@ -12,7 +12,6 @@ public class Contracts {
     private int IDcustomer;
     private String date_of_Reserve;
     private String date_of_handIn;
-    private double start_kilometer;
     private double end_kilometer;
     private double price;
     private String IDPickUp;
@@ -27,10 +26,29 @@ public class Contracts {
     private String model;
     private String brand;
     private String type;
+    private int odometer;
+
+    // Fields from Extras
+    private String extratype;
 
 
     public Contracts(){}
 
+    public int getOdometer() {
+        return odometer;
+    }
+
+    public String getExtratype() {
+        return extratype;
+    }
+
+    public void setExtratype(String extratype) {
+        this.extratype = extratype;
+    }
+
+    public void setOdometer(int odometer) {
+        this.odometer = odometer;
+    }
 
     public String getFirst_Name() {
         return first_Name;
@@ -112,13 +130,6 @@ public class Contracts {
         this.date_of_handIn = date_of_handIn;
     }
 
-    public double getStart_kilometer() {
-        return start_kilometer;
-    }
-
-    public void setStart_kilometer(double start_kilometer) {
-        this.start_kilometer = start_kilometer;
-    }
 
     public double getEnd_kilometer() {
         return end_kilometer;
