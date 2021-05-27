@@ -13,15 +13,13 @@
         <li><a href="#">Account </a>
             <ul>
                 <li><a href="/create">Create account</a> </li>
-                <li><a href="/showCustomer">Show account
-
-                </a> </li>
+                <li><a href="/showCustomer">Show account</a> </li>
             </ul>
         </li>
         <li><a href="#">Browse Cars</a>
             <ul>
-                <li><a href="">Reserve Cars</a> </li>
-                <li><a href="">Rented Cars</a> </li>
+                <li><a href="/showCars">Reserve Cars</a> </li>
+                <li><a href="/showContracts">Rented Cars</a> </li>
             </ul>
         </li>
         <li><a href="#">Statistic</a>
@@ -40,8 +38,11 @@
 </nav>
 
 <h1>Opret reservation</h1>
-<form action="/reservations/create" id="form" method="post">
+
+<div id ="wrapperContact" >
+<div action="/reservations/create" id="form" method="post">
     <table>
+        <div id =left></div>
         <tr>
             <td><label>Autocamper</label></td>
             <td><select name="motorhome_id">
@@ -63,12 +64,29 @@
 
         <tr>
             <td><label>Reservation End date</label></td>
-            <td><input type="datetime-local" step="1" th:field="*{contracts.date_of_handIn}"> </td>
+            <td><input type="datetime-local" step="1" th:field="*{contracts.date_of_handIn}" required> </td>
+        </tr>
+        <tr>
+            <td><label>Add ekstras</label></td>
+            <td><select name="ekstras_id">
+                <option th:each = "ekstra: ${ekstraslist}" th:text="${ekstra.type} + ' ' + ${ekstra.price} + ' kr ' " th:value="${ekstra.idekstras}"></option>
+            </select>
+            </td>
         </tr>
 
+        <title> Add drop off point if needed</title>
+        <br/>
+        <label for="kilometer-pickup"><i class="fa-kilometer"></i> Kilometer</label>
+        <input type="text" id="kilometer-pickup" name="start_kilomter" placeholder="300">
+        <br />
+        <label for="address-pickup"><i class="fa-address"></i> Address</label>
+        <input type="text" id="address-pickup" name="address-pickup" placeholder="Holger Danskes vej 17">
+        <br/>
 
-
+        <input type="submitcontract" value="Confirm">
     </table>
+</div>
+</div>
 </form>
 </body>
 </html>

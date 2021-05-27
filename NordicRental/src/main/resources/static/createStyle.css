@@ -38,6 +38,13 @@ div.editContract{
     right:0.5%;
 }
 
+div.center{
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    z-index: 2;
+}
+
 table.left{
     margin-right: 0px;
     margin-left: auto;

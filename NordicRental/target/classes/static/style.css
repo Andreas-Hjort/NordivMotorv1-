@@ -50,6 +50,7 @@ nav ul li ul {
     padding: 10px;
     border-radius: 0px 0px 4px 4px;
     width: 167px;
+    z-index: 7;
 }
 nav ul li:hover ul {
     display: block;
@@ -68,4 +69,5 @@ nav ul li ul li a:hover {
     width: 150px;
     position: relative;
 }
+
 

@@ -2,6 +2,7 @@ package com.motorhome.demo.HomeController;
 
 import com.motorhome.demo.Model.Cars;
 import com.motorhome.demo.Model.Contracts;
+import com.motorhome.demo.Model.Ekstras;
 import com.motorhome.demo.Model.Person;
 import com.motorhome.demo.Service.CarService;
 import com.motorhome.demo.Service.ContractService;
@@ -104,9 +105,11 @@ public class HomeController {
     public String reserveCar(Model model) {
         List<Cars> cars =carService.fetchALL();
         List <Person> person = customerService.fetchALL();
+        List<Ekstras> ekstra = ekstrasService.fetchAll();
         model.addAttribute("carslist", cars);
         model.addAttribute(("contracts"), new Contracts());
         model.addAttribute("personlist", person);
+        model.addAttribute("ekstraslist", ekstra);
         return ("home/createContract");
     }
 

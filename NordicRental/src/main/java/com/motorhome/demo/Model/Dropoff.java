@@ -12,16 +12,14 @@ public class Dropoff {
     private int id;
     private String address; 
     private int zip;
-    private String date;
     
     public Dropoff(){
     }
 
-    public Dropoff(int id, String address, int zip, String date) {
+    public Dropoff(int id, String address, int zip) {
         this.id = id;
         this.address = address;
         this.zip = zip;
-        this.date = date;
     }
 
     public int getId() {
@@ -48,11 +46,4 @@ public class Dropoff {
         this.zip = zip;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

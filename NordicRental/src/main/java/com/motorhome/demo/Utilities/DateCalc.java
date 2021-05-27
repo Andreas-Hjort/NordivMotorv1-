@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 public class DateCalc {
 
     /*
-     * Coded by Ammad
+     * Coded by Daniel
      */
     // Calculates how many hours there is between the two dates
     public static int hoursBetween(String startDate, String endDate){
@@ -18,7 +18,7 @@ public class DateCalc {
     }
 
     /*
-     * Coded by Julius
+     * Coded by Daniel
      */
     // Checks if there is a collision between the two periods. Returns true if there is
     public static boolean checkDateCollision(String startDate1, String endDate1, String startDate2, String endDate2){
@@ -30,7 +30,7 @@ public class DateCalc {
     }
 
     /*
-     * Coded by Rasmus
+     * Coded by Daniel
      */
     // Corrects the dateformat from the browser so that it can be saved in the database
     public static String fixDateFormatting(String date){
