@@ -28,8 +28,8 @@ public class    ContractRepo {
         return template.query(sql, rowMapper);
     }
 
-    public void addContract(Contracts c){
-        String sql = "INSERT INTO motorhome.contracts (0, ?, ?, ?, ?, ?, ?, ?, ?";
+    public void addContract(Contracts c, int id){
+        String sql = "INSERT INTO motorhome.contracts VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?";
         String start_date = DateCalc.fixDateFormatting(c.getDate_of_Reserve());
         String end_date = DateCalc.fixDateFormatting(c.getDate_of_handIn());
         String season = calculateSeason(c.getDate_of_Reserve());
@@ -37,7 +37,7 @@ public class    ContractRepo {
 
         template.update(sql, c.getId_contracts(), c.getIDcar(), c.getIDcustomer(), start_date,
                end_date,
-                c.getEnd_kilometer(), season, c.getIDPickUp(), c.getIDekstra());
+                c.getEnd_kilometer(), season, id, c.getIDekstra());
     }
 
     public Boolean deleteContract(int id){
@@ -92,6 +92,11 @@ public class    ContractRepo {
                 "          UNION ALL\n" +
                 "          (SELECT price FROM motorhome.ekstras WHERE idekstras = ?) t";
         return template.update(sql);
+    }
+
+    public int created dropoffpoint(){
+        String sql = "INSERT INTO motorhome.dropoff VALUES (?, ? , ?)";
+
     }
 
 }

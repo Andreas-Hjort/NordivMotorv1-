@@ -16,7 +16,7 @@ public class CarRepo {
     JdbcTemplate template;
 
     public List<Cars> fetchALL() {
-        String sql = "SELECT * FROM motorhome.cars";
+        String sql = "SELECT * FROM motorhome.cars WHERE status = false";
         RowMapper<Cars> rowMapper = new BeanPropertyRowMapper<>(Cars.class);
         return template.query(sql, rowMapper);
     }
@@ -28,17 +28,17 @@ public class CarRepo {
     }
 
     public Boolean deleteCar(int id) {
-        String sql = "DELETE FROM motorhome.cars WHERE id = ?";
+        String sql = "DELETE FROM motorhome.cars WHERE id_cars = ?";
         return template.update(sql, id) > 0;
     }
 
     public boolean Cleaning(int id) {
-        String sql = "UPDATE motorhome.cars SET cleaning = NOT cleaning WHERE id = ?";
+        String sql = "UPDATE motorhome.cars SET cleaning = NOT cleaning WHERE id_cars = ?";
         return template.update(sql, id) > 0;
     }
 
     public boolean Service(int id) {
-        String sql = "UPDATE motorhome.cars SET service = NOT service WHERE id = ?";
+        String sql = "UPDATE motorhome.cars SET service = NOT service WHERE id_cars = ?";
         return template.update(sql, id) > 0;
 
     }

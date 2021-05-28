@@ -110,13 +110,13 @@ public class HomeController {
         return ("home/createContract");
     }
 
-    @PostMapping("/submitcontract")
-    public String submitContract(Contracts contracts, Model model) {
+    @PostMapping("/reservations/create{id}")
+    public String submitContract(@PathVariable("id") int id,  Contracts contracts, Model model , Dropoff dropoff) {
         List<Cars> cars = carService.fetchALL();
         model.addAttribute(("contracts"), contracts);
         model.addAttribute("carslist", cars);
-
-        contractService.addContract(contracts);
+        model.addAttribute("dropoff", dropoff);
+        contractService.addContract(contracts, id);
         return "redirect:/showCustomer";
     }
 
@@ -126,7 +126,7 @@ public class HomeController {
         return "redirect:/showCars";
     }
 
-    @PostMapping("/changedate/'+contractID}")
+    @PostMapping("/changedate/'+{contractID}")
     public String changedate(@PathVariable("ID") int id, @ModelAttribute Contracts c){
         contractService.updateContract(id, c);
         return "redirect:/showContracts";

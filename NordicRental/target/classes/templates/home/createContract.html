@@ -18,8 +18,9 @@
         </li>
         <li><a href="#">Browse Cars</a>
             <ul>
-                <li><a href="/showCars">Reserve Cars</a> </li>
+                <li><a href="/showCars">Show Cars</a> </li>
                 <li><a href="/showContracts">Rented Cars</a> </li>
+                <li><a href="/reserveCar">Reserve Cars</a></li>
             </ul>
         </li>
         <li><a href="#">Statistic</a>
@@ -40,13 +41,15 @@
 
 
 <div class="wrapperContact" >
-<div action="/reservations/create" id="form" method="post">
+<form action="/reservations/create + ${dropoff.id_dropoff}" id="form" method="post">
     <h1>Create reservation</h1>
+     <br>
+     <br/>
     <table class="tablecenter">
         <tr>
             <td><label>Autocamper</label></td>
             <td><select name="motorhome_id">
-                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} " th:value="${cars.id_cars}"></option>
+                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} + ' ' + ${cars.price} + kr " th:value="${cars.id_cars}"></option>
             </select>
             </td>
         </tr>
@@ -75,20 +78,18 @@
             </td>
         </tr>
     </table>
-        <title> Add drop off point if needed</title>
+    <h1> Add drop off point if needed</h1>
     <br>
     <br/>
-        <label for="kilometer-pickup"><i class="fa-kilometer"></i> Start odometer</label>
-        <input type="text" id="kilometer-pickup" name="start_kilomter" placeholder="300">
+    <label for="kilometer-pickup"><i class="fa-kilometer"></i> Start odometer</label>
+    <input type="text" id="kilometer-pickup" name="start_kilomter" placeholder="300">
     <br>
     <br />
-        <label for="address-pickup"><i class="fa-address"></i> Address</label>
-        <input type="text" id="address-pickup" name="address-pickup" placeholder="Holger Danskes vej 17">
+    <label for="address-pickup"><i class="fa-address"></i> Address</label>
+    <input type="text" id="address-pickup" name="address-pickup" placeholder="Holger Danskes vej 17">
     <br>
     <br/>
-
-        <input type="submit" value="Confirm">
-
+    <input type="submit">
 </div>
 </div>
 </form>
