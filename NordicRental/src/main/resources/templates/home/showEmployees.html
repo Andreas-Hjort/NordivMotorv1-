@@ -95,7 +95,7 @@
     </thead>
     <tbody>
     <tr th:each="Employee: ${employees}">
-        <td th:text="${Employee.id}" />
+        <td th:text="${Employee.id_employee}" />
         <td th:text="${Employee.first_Name}" />
         <td th:text="${Employee.last_Name}" />
         <td th:text="${Employee.phone}" />
@@ -105,7 +105,7 @@
         <td th:text="${Employee.zip}" />
         <td th:button/>
 
-        <a th:href = "@{'/deleteEmployee/'+${Employee.id}}">
+        <a th:href = "@{'/deleteEmployee/'+${Employee.id_employee}}">
             <button class="btn-delete" id="btn-delete">Delete</button>
         </a>
         </td>
