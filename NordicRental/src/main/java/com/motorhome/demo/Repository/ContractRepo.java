@@ -94,8 +94,9 @@ public class    ContractRepo {
         return template.update(sql);
     }
 
-    public int created dropoffpoint(){
+    public int createddropoffpoint(){
         String sql = "INSERT INTO motorhome.dropoff VALUES (?, ? , ?)";
+        return 1;
 
     }
 

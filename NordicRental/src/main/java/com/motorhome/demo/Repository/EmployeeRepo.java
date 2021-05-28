@@ -23,12 +23,12 @@ public class EmployeeRepo {
 
     public Employee addEmployee(Employee e){
         String sql = "INSERT INTO motorhome.employee VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, e.getId(), e.getFirst_Name(),e.getLast_Name(), e.getPhone(), e.getMail(), e.getOccupation(), e.getAddress(), e.getZip());
+        template.update(sql, e.getId_employee(), e.getFirst_Name(),e.getLast_Name(), e.getPhone(), e.getMail(), e.getOccupation(), e.getAddress(), e.getZip());
         return null;
     }
 
     public Boolean deleteEmployee(int id){
-        String sql = "DELETE FROM motorhome.employee WHERE id = ?";
+        String sql = "DELETE FROM motorhome.employee WHERE id_employee = ?";
         return template.update(sql, id) > 0;
     }
 }
