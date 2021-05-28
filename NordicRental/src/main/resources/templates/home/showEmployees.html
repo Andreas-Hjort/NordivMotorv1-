@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../MyCSS.css" rel="stylesheet" type="text/css">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<nav>
+    <p><a href="/">Nordic Motorhomes</a></p>
+    <ul>
+        <li><a href="#">Account </a>
+            <ul>
+                <li><a href="/create">Create account</a> </li>
+                <li><a href="/showCustomer">Show account
+
+                </a> </li>
+            </ul>
+        </li>
+        <li><a href="#">Browse Cars</a>
+            <ul>
+                <li><a href="/showCars">Reserve Cars</a> </li>
+                <li><a href="/showContracts">Rented Cars</a> </li>
+            </ul>
+        </li>
+        <li><a href="#">Employee</a>
+            <ul>
+                <li><a href="/showEmployees">Show Employees</a> </li>
+            </ul>
+        </li>
+        <li><a href="#">About us</a>
+            <ul>
+                <li><a href ="">Nordic Motorhomes</a> </li>
+                <li><a href ="https://www.google.com/maps/place/Christian+4+Vej+53,+6000+Kolding/@55.472469,9.4883382,17z/data=!3m1!4b1!4m5!3m4!1s0x464ca1e7593e6a0d:0x87e7bc609fd75b49!8m2!3d55.472469!4d9.4905269">Christian 4 vej 53</a>
+                <li><a href ="https://www.google.com/maps/place/Christian+4+Vej+53,+6000+Kolding/@55.472469,9.4883382,17z/data=!3m1!4b1!4m5!3m4!1s0x464ca1e7593e6a0d:0x87e7bc609fd75b49!8m2!3d55.472469!4d9.4905269">6000 Kolding</a> </li>
+                <li><a href ="">Tlf: 22991913</a> </li>
+                <li><a href ="mailto:nordicmotorhomes@outlook.dk">Mail:NMH@outlook.dk</a> </li>
+            </ul>
+        </li>
+
+    </ul>
+</nav>
+
+<table>
+    <thead>
+    </thead>
+    <form action="/addEMP" method="post">
+        <tr>
+            <th><label for="first_Name"><i class="fa-first_Name"></i> Employee first name</label>
+                <input type="text" id="first_Name" name="first_Name" placeholder="Enter First name">
+            </th>
+            <th>
+                <label for="last_Name"><i class="fa fa-envelope"></i> Employee last name</label>
+                <input type="text" id="last_Name" name="last_Name" placeholder="Enter last name ">
+            </th>
+            <th>
+                <label for="phone"><i class="fa fa-address-card-o"></i> Employee Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter phone">
+            </th>
+            <th>
+                <label for="mail"><i class="fa fa-institution"></i> Employee Mail</label>
+                <input type="text" id="mail" name="mail" placeholder="Enter Mail">
+            </th>
+            <th>
+                <label for="occupation"><i class="fa fa-institution"></i> Employee Occupation</label>
+                <input type="text" id="occupation" name="occupation" placeholder="Enter Occupation.">
+            </th>
+            <th>
+                <label for="address"><i class="fa fa-institution"></i> Employee Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter address">
+            </th>
+            <th>
+                <label for="zip"><i class="fa fa-institution"></i> Employee Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="Enter Zip">
+            </th>
+            <th>
+                <input type="submit" value="Confirm">
+            </th>
+        </tr>
+    </form>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Phonenumber</th>
+        <th>Mail</th>
+        <th>Occupation</th>
+        <th>address</th>
+        <th>Zip</th>
+        <th>Buttons</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Employee: ${employees}">
+        <td th:text="${Employee.id}" />
+        <td th:text="${Employee.first_Name}" />
+        <td th:text="${Employee.last_Name}" />
+        <td th:text="${Employee.phone}" />
+        <td th:text="${Employee.mail}" />
+        <td th:text="${Employee.occupation}" />
+        <td th:text="${Employee.address}" />
+        <td th:text="${Employee.zip}" />
+        <td th:button/>
+
+        <a th:href = "@{'/deleteEmployee/'+${Employee.id}}">
+            <button class="btn-delete" id="btn-delete">Delete</button>
+        </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</tbody>
+</table>
+</body>
+</html>

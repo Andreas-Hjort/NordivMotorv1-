@@ -1,13 +1,7 @@
 package com.motorhome.demo.HomeController;
 
-import com.motorhome.demo.Model.Cars;
-import com.motorhome.demo.Model.Contracts;
-import com.motorhome.demo.Model.Ekstras;
-import com.motorhome.demo.Model.Person;
-import com.motorhome.demo.Service.CarService;
-import com.motorhome.demo.Service.ContractService;
-import com.motorhome.demo.Service.CustomerService;
-import com.motorhome.demo.Service.EkstrasService;
+import com.motorhome.demo.Model.*;
+import com.motorhome.demo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +23,9 @@ public class HomeController {
 
     @Autowired
     EkstrasService ekstrasService;
+
+    @Autowired
+    EmployeeService employeeService;
 
     @GetMapping("/")
     public String frontpage() {
@@ -135,8 +132,25 @@ public class HomeController {
         return "redirect:/showContracts";
     }
 
+    @GetMapping("/showEmployees")
+    public String employeeIndex (Model model) {
+        List<Employee> employeeList = employeeService.fetchALL();
+        model.addAttribute("employees", employeeList);
+        return "home/showEmployees";
+    }
 
+    @PostMapping("/addEMP")
+    public String addEMP(@ModelAttribute Employee e){
+        employeeService.addEMP(e);
+        return "redirect:/showEmployees";
+    }
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteEmployee(@PathVariable("id") int id) {
+        employeeService.deleteEmployee(id);
+        return "redirect:/showEmployees";
 
+    }
 }
+
 
 
