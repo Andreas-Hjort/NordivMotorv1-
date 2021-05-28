@@ -105,7 +105,7 @@
   </thead>
   <tbody>
   <tr th:each="Cars: ${carslist}">
-    <td th:text="${Cars.id}" />
+    <td th:text="${Cars.id_cars}" />
     <td th:text="${Cars.brand}" />
     <td th:text="${Cars.model}" />
     <td th:text="${Cars.type}" />
@@ -119,10 +119,10 @@
     <a href="/reserveCar">
       <button class="btn-delete" id="btn-delete">Reserve</button>
     </a>
-    <a th:href = "@{'/cleaning/'+${Cars.id}}">
+    <a th:href = "@{'/cleaning/'+${Cars.id_cars}}">
       <button class="btn-update" id="btn-update">Edit</button>
     </a>
-      <a th:href ="@{'/service/'+${Cars.id}}">
+      <a th:href ="@{'/service/'+${Cars.id_cars}}">
         <button class="btn-update" id="btn-create">Service</button>
       </a>
     </td>

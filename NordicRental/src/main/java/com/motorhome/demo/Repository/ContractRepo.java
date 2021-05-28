@@ -11,14 +11,14 @@ import com.motorhome.demo.Utilities.DateCalc;
 import java.util.List;
 
 @Repository
-public class ContractRepo {
+public class    ContractRepo {
 
     @Autowired
     JdbcTemplate template;
 
     public List<Contracts> fetchALL(){
         String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id = contracts.idcar JOIN motorhome.customer ON idcustomer = customer.id " +
-                "JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra JOIN motorhome.dropoff ON dropoff.id = contracts.idpickup";
+                "JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         return template.query(sql, rowMapper);
     }

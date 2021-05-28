@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Cars {
 
     @Id
-    private int id;
+    private int id_cars;
     private String brand;
     private String model;
     private int beds;
@@ -23,8 +23,8 @@ public class Cars {
     }
 
 
-    public Cars(int id, String brand, String model, int beds, int odometer, double price, Boolean status, Boolean cleaning, Boolean service, String type) {
-        this.id = id;
+    public Cars(int id_cars, String brand, String model, int beds, int odometer, double price, Boolean status, Boolean cleaning, Boolean service, String type) {
+        this.id_cars = id_cars;
         this.brand = brand;
         this.model = model;
         this.type = type;
@@ -45,12 +45,12 @@ public class Cars {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
+    public int getId_cars() {
+        return id_cars;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_cars(int id_cars) {
+        this.id_cars = id_cars;
     }
 
     public String getBrand() {
