@@ -103,7 +103,7 @@ public class HomeController {
 
     @GetMapping("/reserveCar")
     public String reserveCar(Model model) {
-        List<Cars> cars =carService.fetchALL();
+        List<Cars> cars = carService.fetchALL();
         List <Person> person = customerService.fetchALL();
         List<Ekstras> ekstra = ekstrasService.fetchAll();
         model.addAttribute("carslist", cars);

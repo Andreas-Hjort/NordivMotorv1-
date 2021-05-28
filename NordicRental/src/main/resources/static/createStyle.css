@@ -1,10 +1,12 @@
-#wrapperContact{
-    height: 550px;
-    width: 500px;
-    border: 1px solid black;
+.wrapperContact{
+    height: 380px;
+    width: 400px;
     margin: auto;
+    border: 1px solid black;
     padding: 4px;
     background-color: lightblue;
+    text-align: center;
+    justify-items: center;
 }
 .container {
     width: 350px;
@@ -45,8 +47,8 @@ div.center{
     z-index: 2;
 }
 
-table.left{
-    margin-right: 0px;
-    margin-left: auto;
+.tablecenter{
+    position: relative;
+    margin: auto;
 }
 

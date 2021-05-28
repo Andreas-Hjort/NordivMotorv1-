@@ -9,25 +9,25 @@ import javax.persistence.Id;
 public class Dropoff {
     
     @Id
-    private int id;
+    private int id_dropoff;
     private String address; 
     private int zip;
     
     public Dropoff(){
     }
 
-    public Dropoff(int id, String address, int zip) {
-        this.id = id;
+    public Dropoff(int id_dropoff, String address, int zip) {
+        this.id_dropoff = id_dropoff;
         this.address = address;
         this.zip = zip;
     }
 
     public int getId() {
-        return id;
+        return id_dropoff;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int id_dropoff) {
+        this.id_dropoff = id_dropoff;
     }
 
     public String getAddress() {
