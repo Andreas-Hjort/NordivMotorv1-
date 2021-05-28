@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Person {
 
  @Id
- private int id;
+ private int id_customer;
  private String first_Name;
  private String last_Name;
  private int phone;
@@ -17,8 +17,8 @@ public class Person {
  private int licensenr;
  private String licensedate;
 
- public Person(int id, String first_Name, String last_Name, int phone, String mail, String address, int zip, int licensenr, String licensedate) {
-  this.id = id;
+ public Person(int id_customer, String first_Name, String last_Name, int phone, String mail, String address, int zip, int licensenr, String licensedate) {
+  this.id_customer = id_customer;
   this.first_Name = first_Name;
   this.last_Name = last_Name;
   this.phone = phone;
@@ -33,12 +33,12 @@ public class Person {
 
  }
 
- public int getId() {
-  return id;
+ public int getId_customer() {
+  return id_customer;
  }
 
- public void setId(int id) {
-  this.id = id;
+ public void setId_customer(int id_customer) {
+  this.id_customer = id_customer;
  }
 
  public String getFirst_Name() {

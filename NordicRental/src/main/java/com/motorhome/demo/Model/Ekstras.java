@@ -8,7 +8,7 @@ public class Ekstras {
 
     @Id
     private int idekstras;
-    private String type;
+    private String extratype;
     private double price;
 
 
@@ -16,9 +16,9 @@ public class Ekstras {
 
     }
 
-    public Ekstras(int idekstras, String type, double price) {
+    public Ekstras(int idekstras, String extratype, double price) {
         this.idekstras = idekstras;
-        this.type = type;
+        this.extratype = extratype;
         this.price = price;
     }
 
@@ -30,12 +30,12 @@ public class Ekstras {
         this.idekstras = idekstras;
     }
 
-    public String getType() {
-        return type;
+    public String getExtratype() {
+        return extratype;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setExtratype(String extratype) {
+        this.extratype = extratype;
     }
 
     public double getPrice() {

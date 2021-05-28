@@ -60,7 +60,7 @@
 </thead>
 <tbody>
 <tr th:each="Person: ${customers}">
-    <td th:text="${Person.id}" />
+    <td th:text="${Person.id_customer}" />
     <td th:text="${Person.first_Name}" />
     <td th:text="${Person.last_Name}" />
     <td th:text="${Person.phone}" />
@@ -71,7 +71,7 @@
     <td th:text="${Person.licensedate}" />
     <td th:button/>
 
-    <a th:href = "@{'/delete/'+${Person.id}}">
+    <a th:href = "@{'/delete/'+${Person.id_customer}}">
           <button class="btn-delete" id="btn-delete">Delete</button>
         </a>
     </td>

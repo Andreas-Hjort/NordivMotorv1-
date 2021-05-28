@@ -46,14 +46,14 @@
         <tr>
             <td><label>Autocamper</label></td>
             <td><select name="motorhome_id">
-                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} " th:value="${cars.id}"></option>
+                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} " th:value="${cars.id_cars}"></option>
             </select>
             </td>
         </tr>
         <tr>
             <td><label>Choose Customer</label></td>
             <td><select name="Customer_id">
-                <option th:each = "person: ${personlist}" th:text="${person.first_Name} + ' ' + ${person.last_Name} " th:value="${person.id}"></option>
+                <option th:each = "person: ${personlist}" th:text="${person.first_Name} + ' ' + ${person.last_Name} " th:value="${person.id_customer}"></option>
             </select>
             </td>
         </tr>
@@ -70,7 +70,7 @@
         <tr>
             <td><label>Add extras</label></td>
             <td><select name="ekstras_id">
-                <option th:each = "ekstra: ${ekstraslist}" th:text="${ekstra.type} + ' ' + ${ekstra.price} + ' kr ' " th:value="${ekstra.idekstras}"></option>
+                <option th:each = "ekstra: ${ekstraslist}" th:text="${ekstra.extratype} + ' ' + ${ekstra.price} + ' kr ' " th:value="${ekstra.idekstras}"></option>
             </select>
             </td>
         </tr>
