@@ -37,5 +37,9 @@ public class ContractService {
         return contractRepo.findContractByID(id);
     }
 
+    public void updateContract(int id, Contracts c){
+        contractRepo.updateContract(id, c);
+    }
+
 
 }

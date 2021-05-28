@@ -129,11 +129,13 @@ public class HomeController {
         return "redirect:/showCars";
     }
 
-    @GetMapping("getContract")
-    public String getContract(@PathVariable("id") int id){
-        contractService.findcontractid(id);
-        return "home/showContracts";
+    @PostMapping("/changedate/'+contractID}")
+    public String changedate(@PathVariable("ID") int id, @ModelAttribute Contracts c){
+        contractService.updateContract(id, c);
+        return "redirect:/showContracts";
     }
+
+
 
 }
 

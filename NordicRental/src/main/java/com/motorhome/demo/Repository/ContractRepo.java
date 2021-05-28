@@ -1,7 +1,6 @@
 package com.motorhome.demo.Repository;
 
 import com.motorhome.demo.Model.Contracts;
-import com.motorhome.demo.Model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,7 +17,8 @@ public class ContractRepo {
     JdbcTemplate template;
 
     public List<Contracts> fetchALL(){
-        String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id = contracts.idcar JOIN motorhome.customer ON idcustomer = customer.id";
+        String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id = contracts.idcar JOIN motorhome.customer ON idcustomer = customer.id " +
+                "JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra JOIN motorhome.dropoff ON dropoff.id = contracts.idpickup";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         return template.query(sql, rowMapper);
     }
@@ -52,7 +52,9 @@ public class ContractRepo {
         return contracts;
     }
 
-    public void updateContract(Contracts contracts, int id){
+    public void updateContract(int id, Contracts input) {
+        String sql = "UPDATE motorhome.Contract SET date_of_reserve = ?, date_of_handin WHERE id = ?";
+        template.update(sql, input.getDate_of_Reserve(), input.getDate_of_handIn()  ,id);
 
     }
 

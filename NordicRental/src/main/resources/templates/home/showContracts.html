@@ -51,8 +51,10 @@
             <th>Start kilometer</th>
             <th>End kilometer</th>
             <th>Price</th>
-            <th>ID Pickup</th>
-            <th>ID dropoff</th>
+            <th>Address for pick up</th>
+            <th>Zip for pick up</th>
+            <th>Distance to location</th>
+            <th>Extra</th>
             <th>Buttons</th>
         </tr>
         </thead>
@@ -62,56 +64,28 @@
             <td th:text="${contracts.brand}"/>
             <td th:text="${contracts.model}"/>
             <td th:text="${contracts.type}"/>
+            <td th:text="${contracts.odometer}"/>
             <td th:text="${contracts.first_Name}"/>
             <td th:text="${contracts.last_Name}"/>
             <td th:text="${contracts.date_of_Reserve}"/>
             <td th:text="${contracts.date_of_handIn}"/>
-            <td th:text="${contracts.start_kilometer}"/>
             <td th:text="${contracts.end_kilometer}"/>
             <td th:text="${contracts.price}"/>
-            <td th:text="${contracts.IDPickUp}"/>
-            <td th:text="${contracts.IDekstra}"/>
+            <td th:text="${contracts.address}"/>
+            <td th:text="${contracts.zip}"/>
+            <td th:text="${contracts.distance_in_kilometer}"/>
+            <td th:text="${contracts.extratype}"/>
             <td><button class="btn">End rental</button></td>
         </tr>
         </tbody>
     </table>
 <div class ="editContract" >
-    <form action ="getContract" method="get">
-        <h1>Edit Contract</h1>
+    <form action = change method="get">
         <label for="contractID"><i class="fa fa-user"></i> Contract ID</label>
         <input type="text" id="contractID" name="contract-ID" placeholder="Enter contract ID">
-        <input type="submit" value="Confirm">
-        <br />
-        <br />
-        <br />
-        <br />
-        <label for="carID"><i class="fa-lastmame"></i> Car ID</label>
-        <input type="text" id="carID" name="carID" placeholder="Enter car ID">
-        <br />
-        <label for="idCustomer"><i class="fa fa-envelope"></i> Customer ID</label>
-        <input type="text" id="idCustomer" name="idCustomer" placeholder="Enter customer ID">
-        <br />
-        <label for="dateOfReserve"><i class="fa fa-address-card-o"></i> Date of reservation</label>
-        <input type="text" id="dateOfReserve" name="dateOfRes" placeholder="Enter date of reservation like '2020-05-05'">
-        <br />
-        <label for="dateOfHandIn"><i class="fa fa-institution"></i> Date of hand-in</label>
-        <input type="text" id="dateOfHandIn" name="dateOfHand" placeholder="Enter date of hand-in like '2020-05-05'">
-        <br />
-        <label for="startkm"><i class="fa fa-institution"></i> Start odometer</label>
-        <input type="text" id="startkm" name="startKM" placeholder="Enter start km.">
-        <br />
-        <label for="endkm"><i class="fa fa-institution"></i> End odometer</label>
-        <input type="text" id="endkm" name="endKM" placeholder="Enter end km.">
-        <br />
-        <label for="price"><i class="fa fa-institution"></i> Price</label>
-        <input type="text" id="price" name="price" placeholder="Enter price for rental">
-        <br />
-        <label for="idPickUp"><i class="fa fa-institution"></i> Pick up ID</label>
-        <input type="text" id="idPickUp" name="pickUpID" placeholder="Enter ID of pickup destination">
-        <br />
-        <label for="idDropOff"><i class="fa fa-institution"></i> Drop off ID</label>
-        <input type="text" id="idDropOff" name="dropOffID" placeholder="Enter ID of dropoff destination">
-        <input type="submit" value="Confirm">
+        <input type="submit" value="Select Id">
+        <td button/>
+        <a href = @{'/changedate/'+${contractID} ></a>
     </form>
 </div>
 </body>

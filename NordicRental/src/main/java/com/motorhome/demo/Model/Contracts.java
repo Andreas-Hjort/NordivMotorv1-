@@ -31,6 +31,10 @@ public class Contracts {
     // Fields from Extras
     private String extratype;
 
+    //Dropoff
+    private String address;
+    private int zip;
+    private int distance_in_kilometer;
 
     public Contracts(){}
 
@@ -166,5 +170,29 @@ public class Contracts {
     public void setIDekstra(int IDekstra) {
         this.IDekstra = IDekstra;
     }
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public int getDistance_in_kilometer() {
+        return distance_in_kilometer;
+    }
+
+    public void setDistance_in_kilometer(int distance_in_kilometer) {
+        this.distance_in_kilometer = distance_in_kilometer;
+    }
+
 }
 
