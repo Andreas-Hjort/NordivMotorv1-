@@ -17,7 +17,7 @@ public class    ContractRepo {
     JdbcTemplate template;
 
     public List<Contracts> fetchALL(){
-        String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id = contracts.idcar JOIN motorhome.customer ON idcustomer = customer.id " +
+        String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id_cars = contracts.idcar JOIN motorhome.customer ON id_customer = customer.id_customer " +
                 "JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         return template.query(sql, rowMapper);
@@ -80,6 +80,13 @@ public class    ContractRepo {
                 break;
         }
         return "undefined";
+    }
+    public double priceSum() {
+        String sql = "SELECT SUM(t.price) AS price from cars\n" +
+                "\tFROM (SELECT price FROM cars WHERE id = ?)\n" +
+                "          UNION ALL\n" +
+                "          (SELECT price FROM motorhome.ekstras WHERE idekstras = ?) t";
+        return template.update(sql);
     }
 
 }
