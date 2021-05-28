@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.security.mscapi.CPublicKey;
 
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class HomeController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    DropoffService dropoffService;
 
     @GetMapping("/")
     public String frontpage() {
@@ -103,21 +107,31 @@ public class HomeController {
         List<Cars> cars = carService.fetchALL();
         List <Person> person = customerService.fetchALL();
         List<Ekstras> ekstra = ekstrasService.fetchAll();
+        List<Dropoff> drops = dropoffService.fetchALL();
         model.addAttribute("carslist", cars);
         model.addAttribute(("contracts"), new Contracts());
         model.addAttribute("personlist", person);
         model.addAttribute("ekstraslist", ekstra);
+        model.addAttribute("drops", drops);
         return ("home/createContract");
     }
 
-    @PostMapping("/reservations/create{id}")
-    public String submitContract(@PathVariable("id") int id,  Contracts contracts, Model model , Dropoff dropoff) {
+    @PostMapping("/dropoff/create")
+        public String createContract(@ModelAttribute Dropoff dropoff){
+            dropoffService.createDropOff(dropoff);
+            return "redirect:/reserveCar";
+        }
+
+
+@PostMapping("/reservations/create")
+    public String submitContract(Contracts contracts, Model model) {
         List<Cars> cars = carService.fetchALL();
+        List<Dropoff> drops = dropoffService.fetchALL();
         model.addAttribute(("contracts"), contracts);
         model.addAttribute("carslist", cars);
-        model.addAttribute("dropoff", dropoff);
-        contractService.addContract(contracts, id);
-        return "redirect:/showCustomer";
+        model.addAttribute("drops", drops);
+        contractService.addContract(contracts);
+        return "redirect:/reserveCar";
     }
 
     @PostMapping("/addCar")

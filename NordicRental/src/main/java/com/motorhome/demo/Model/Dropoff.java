@@ -12,24 +12,34 @@ public class Dropoff {
     private int id_dropoff;
     private String address; 
     private int zip;
+    private double distance_in_kilometer;
     
     public Dropoff(){
     }
 
-    public Dropoff(int id_dropoff, String address, int zip) {
+    public Dropoff(int id_dropoff, String address, int zip, double distance_in_kilometer) {
         this.id_dropoff = id_dropoff;
         this.address = address;
         this.zip = zip;
+        this.distance_in_kilometer = distance_in_kilometer;
     }
 
-    public int getId() {
+    public int getId_dropoff() {
         return id_dropoff;
     }
 
-    public void setId(int id_dropoff) {
+    public void setId_dropoff(int id_dropoff) {
         this.id_dropoff = id_dropoff;
     }
 
+
+    public double getDistance_in_kilometer() {
+        return distance_in_kilometer;
+    }
+
+    public void setDistance_in_kilometer(double distance_in_kilometer) {
+        this.distance_in_kilometer = distance_in_kilometer;
+    }
     public String getAddress() {
         return address;
     }

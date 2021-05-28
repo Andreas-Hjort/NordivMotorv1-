@@ -1,6 +1,7 @@
 package com.motorhome.demo.Repository;
 
 import com.motorhome.demo.Model.Contracts;
+import com.motorhome.demo.Model.Dropoff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,16 +29,16 @@ public class    ContractRepo {
         return template.query(sql, rowMapper);
     }
 
-    public void addContract(Contracts c, int id){
-        String sql = "INSERT INTO motorhome.contracts VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?";
+    public void addContract(Contracts c){
+        String sql = "INSERT INTO motorhome.contracts VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String start_date = DateCalc.fixDateFormatting(c.getDate_of_Reserve());
         String end_date = DateCalc.fixDateFormatting(c.getDate_of_handIn());
         String season = calculateSeason(c.getDate_of_Reserve());
 
 
-        template.update(sql, c.getId_contracts(), c.getIDcar(), c.getIDcustomer(), start_date,
-               end_date,
-                c.getEnd_kilometer(), season, id, c.getIDekstra());
+        template.update(sql,c.getId_contracts(), c.getIDcar(), c.getIDcustomer(), start_date,
+               end_date
+                ,c.getEnd_kilometer(), season, c.getIDPickUp(), c.getIDekstra());
     }
 
     public Boolean deleteContract(int id){
@@ -86,17 +87,12 @@ public class    ContractRepo {
         }
         return "undefined";
     }
-    public double priceSum() {
-        String sql = "SELECT SUM(t.price) AS price from cars\n" +
-                "\tFROM (SELECT price FROM cars WHERE id = ?)\n" +
-                "          UNION ALL\n" +
-                "          (SELECT price FROM motorhome.ekstras WHERE idekstras = ?) t";
-        return template.update(sql);
-    }
 
-    public int created dropoffpoint(){
-        String sql = "INSERT INTO motorhome.dropoff VALUES (?, ? , ?)";
 
+    public int createddropoffpoint(Dropoff dropoff){
+        String sql = "INSERT INTO motorhome.dropoff VALUES (?, ? , ?, ?)";
+        template.update(sql ,dropoff.getId_dropoff(), dropoff.getAddress(), dropoff.getZip() , dropoff.getDistance_in_kilometer());
+        return dropoff.getId_dropoff();
     }
 
 }

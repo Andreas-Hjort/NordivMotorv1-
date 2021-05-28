@@ -41,7 +41,25 @@
 
 
 <div class="wrapperContact" >
-<form action="/reservations/create + ${dropoff.id_dropoff}" id="form" method="post">
+    <form action="/dropoff/create" method="post">
+        <tr>
+        <th><label for="distance_in_kilometer"><i class="fa-kilometer"></i> Start odometer</label>
+        <input type="text" id="distance_in_kilometer" name="distance_in_kilometer" placeholder="300"></th>
+        <br>
+        <br />
+        <th><label for="address"><i class="fa-address"></i> Address</label>
+        <input type="text" id="address" name="address" placeholder="Holger Danskes vej 17"></th>
+        <br>
+        <br/>
+        <th><label for="zip"><i class="fa-address"></i> Zip</label>
+        <input type="text" id="zip" name="zip" placeholder="2000"></th>
+        <br>
+        <br/>
+        <th><input type="submit" value="Add drop off point"></th>
+        </tr>
+    </form>
+
+<form action="/reservations/create" id="form" method="post">
     <h1>Create reservation</h1>
      <br>
      <br/>
@@ -77,21 +95,16 @@
             </select>
             </td>
         </tr>
+        <tr>
+            <td><label>Add drop off point</label></td>
+            <td><select name="dropoff_id">
+                <option value="1" th:each = "Dropoff: ${drops}" th:text="'Address: ' + ${Dropoff.address} + ' Zip: ' + ${Dropoff.zip} + ' Distance: ' + ${Dropoff.distance_in_kilometer} " th:value="${Dropoff.id_dropoff}">1</option>
+            </select>
+            </td>
+        </tr>
     </table>
-    <h1> Add drop off point if needed</h1>
-    <br>
-    <br/>
-    <label for="kilometer-pickup"><i class="fa-kilometer"></i> Start odometer</label>
-    <input type="text" id="kilometer-pickup" name="start_kilomter" placeholder="300">
-    <br>
-    <br />
-    <label for="address-pickup"><i class="fa-address"></i> Address</label>
-    <input type="text" id="address-pickup" name="address-pickup" placeholder="Holger Danskes vej 17">
-    <br>
-    <br/>
-    <input type="submit">
-</div>
-</div>
+    <input type="submit" value="Confirm">
 </form>
+</div>
 </body>
 </html>

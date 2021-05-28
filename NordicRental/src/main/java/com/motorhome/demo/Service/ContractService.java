@@ -3,6 +3,7 @@ package com.motorhome.demo.Service;
 import com.motorhome.demo.Model.Contracts;
 import com.motorhome.demo.Model.Ekstras;
 import com.motorhome.demo.Model.Person;
+import com.motorhome.demo.Model.Dropoff;
 import com.motorhome.demo.Repository.ContractRepo;
 import com.motorhome.demo.Repository.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class ContractService {
         return contractRepo.fetchALL();
     }
 
-    public void addContract(Contracts c, int id){
-        contractRepo.addContract(c, id );
+    public void addContract(Contracts c){
+        contractRepo.addContract(c);
     }
 
     public Boolean deleteContract(int id){
