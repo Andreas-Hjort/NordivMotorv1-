@@ -18,7 +18,7 @@ public class    ContractRepo {
 
     public List<Contracts> fetchALL(){
         String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id_cars = contracts.idcar JOIN motorhome.customer ON id_customer = customer.id_customer " +
-                "JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id";
+                "JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         return template.query(sql, rowMapper);
     }
@@ -30,30 +30,30 @@ public class    ContractRepo {
         String season = calculateSeason(c.getDate_of_Reserve());
 
 
-        template.update(sql, c.getId(), c.getIDcar(), c.getIDcustomer(), start_date,
+        template.update(sql, c.getId_contracts(), c.getIDcar(), c.getIDcustomer(), start_date,
                end_date,
                 c.getEnd_kilometer(), season, c.getIDPickUp(), c.getIDekstra());
     }
 
     public Boolean deleteContract(int id){
-        String sql = "DELETE FROM motorhome.contracts WHERE id = ?";
+        String sql = "DELETE FROM motorhome.contracts WHERE id_contracts = ?";
         return template.update(sql, id) > 0;
     }
 
     public void createContract(int id){
-        String sql = "INSERT INTO motorhome.contracts (idcar) SELECT id FROM motorhome.cars WHERE id = " + id;
+        String sql = "INSERT INTO motorhome.contracts (idcar) SELECT id FROM motorhome.cars WHERE id_contracts = " + id;
         template.update(sql);
     }
 
     public Contracts findContractByID(int id){
-        String sqlFindContract = "SELECT * FROM motorhome.contracts WHERE id = ?";
+        String sqlFindContract = "SELECT * FROM motorhome.contracts WHERE id_contracts = ?";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         Contracts contracts = template.queryForObject(sqlFindContract, rowMapper, id);
         return contracts;
     }
 
     public void updateContract(int id, Contracts input) {
-        String sql = "UPDATE motorhome.Contract SET date_of_reserve = ?, date_of_handin WHERE id = ?";
+        String sql = "UPDATE motorhome.Contract SET date_of_reserve = ?, date_of_handin WHERE id_contracts = ?";
         template.update(sql, input.getDate_of_Reserve(), input.getDate_of_handIn()  ,id);
 
     }

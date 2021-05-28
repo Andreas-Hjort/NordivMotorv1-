@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Contracts {
 
     @Id
-    private int id;
+    private int id_contracts;
     private int IDcar;
     private int IDcustomer;
     private String date_of_Reserve;
@@ -94,12 +94,12 @@ public class Contracts {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
+    public int getId_contracts() {
+        return id_contracts;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_contracts(int id_contracts) {
+        this.id_contracts = id_contracts;
     }
 
     public int getIDcar() {
