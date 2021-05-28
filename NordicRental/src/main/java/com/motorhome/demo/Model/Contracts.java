@@ -25,7 +25,7 @@ public class Contracts {
     //Fields from Car
     private String model;
     private String brand;
-    private String type;
+    private String type_cars;
     private int odometer;
 
     // Fields from Extras
@@ -86,12 +86,12 @@ public class Contracts {
         this.brand = brand;
     }
 
-    public String getType() {
-        return type;
+    public String getType_cars() {
+        return type_cars;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType_cars(String type_cars) {
+        this.type_cars = type_cars;
     }
 
     public int getId_contracts() {

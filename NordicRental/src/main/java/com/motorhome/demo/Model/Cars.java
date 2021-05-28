@@ -16,18 +16,18 @@ public class Cars {
     private Boolean status;
     private Boolean cleaning;
     private Boolean service;
-    private String type;
+    private String type_cars;
 
     public Cars(){
 
     }
 
 
-    public Cars(int id_cars, String brand, String model, int beds, int odometer, double price, Boolean status, Boolean cleaning, Boolean service, String type) {
+    public Cars(int id_cars, String brand, String model, int beds, int odometer, double price, Boolean status, Boolean cleaning, Boolean service, String type_cars) {
         this.id_cars = id_cars;
         this.brand = brand;
         this.model = model;
-        this.type = type;
+        this.type_cars = type_cars;
         this.beds = beds;
         this.odometer = odometer;
         this.price = price;
@@ -109,8 +109,8 @@ public class Cars {
         this.service = service;
     }
 
-    public String getType(){return type;}
+    public String getType(){return type_cars;}
 
-    public void setType(String type){this.type = type;}
+    public void setType(String type_cars){this.type_cars = type_cars;}
 
 }

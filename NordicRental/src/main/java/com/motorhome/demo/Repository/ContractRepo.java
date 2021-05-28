@@ -17,8 +17,13 @@ public class    ContractRepo {
     JdbcTemplate template;
 
     public List<Contracts> fetchALL(){
-        String sql = "SELECT * FROM motorhome.contracts JOIN motorhome.cars ON cars.id_cars = contracts.idcar JOIN motorhome.customer ON id_customer = customer.id_customer " +
-                "JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff";
+        String sql = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
+                "contracts.date_of_reserve, contracts.date_of_handin, \n" +
+                "contracts.price, dropoff.address, \n" +
+                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype \n" +
+                "FROM motorhome.contracts\n" +
+                "INNER JOIN motorhome.cars ON cars.id_cars = contracts.idcar INNER JOIN motorhome.customer ON customer.id_customer  = contracts.idcustomer\n" +
+                "INNER JOIN motorhome.ekstras ON ekstras.idekstras = contracts.idekstra INNER JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         return template.query(sql, rowMapper);
     }
