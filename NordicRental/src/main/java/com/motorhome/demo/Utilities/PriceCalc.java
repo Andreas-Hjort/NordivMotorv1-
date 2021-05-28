@@ -13,7 +13,7 @@ public class PriceCalc {
     JdbcTemplate template;
 
     public int carPrice() {
-    String sql = "SELECT price FROM motorhome.cars WHERE motorhome.cars.id = ?";
+    String sql = "SELECT price FROM motorhome.cars WHERE id_cars = ?";
     return template.update(sql);
     }
     public int ekstrasPrice(){
@@ -24,7 +24,7 @@ public class PriceCalc {
         return ekstrasPrice() + carPrice();
     }
     public int priceDatabase(int c){
-        String sql = "Update motorhome.contracts SET price = ? WHERE id = ?";
+        String sql = "Update motorhome.contracts SET price = ? WHERE id_contracts = ?";
         return template.update(sql, totalPrice(), c);
 
     }
