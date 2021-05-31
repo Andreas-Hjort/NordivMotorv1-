@@ -32,12 +32,18 @@ public class ContractService {
         contractRepo.createContract(id);
     }
 
-    public List<Contracts> findcontractid(int id){
+    public Contracts findcontractById(int id){
         return contractRepo.findContractByID(id);
     }
 
     public void updateContract(int id, Contracts c){
         contractRepo.updateContract(id, c);
+    }
+
+    public void updatekilometer(int id, Contracts c) {contractRepo.updateKilometer(id , c);}
+
+    public List<Contracts> findContractByIdList(int id){
+        return findContractByIdList(id);
     }
 
 

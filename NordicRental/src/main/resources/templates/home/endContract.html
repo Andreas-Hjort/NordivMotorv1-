@@ -43,6 +43,8 @@
 </nav>
 
 <table class="table.left">
+
+
     <thead>
     <tr>
         <th>Contract ID</th>
@@ -69,6 +71,7 @@
         <td th:text="${contracts.model}"/>
         <td th:text="${contracts.type_cars}"/>
         <td th:text="${contracts.odometer}"/>
+        <td th:text="${contracts.end_kilometer}"/>
         <td th:text="${contracts.first_Name}"/>
         <td th:text="${contracts.last_Name}"/>
         <td th:text="${contracts.date_of_Reserve}"/>
@@ -78,8 +81,17 @@
         <td th:text="${contracts.zip}"/>
         <td th:text="${contracts.distance_in_kilometer}"/>
         <td th:text="${contracts.extratype}"/>
+        <td>
+        </td>
     </tr>
     </tbody>
 </table>
+<form class="" th:href="@{'/chooseContract/'+${contracts.id_contracts}}" method="post">
+    <tr>
+        <th><label for="end_kilometer" ><i class ="fa_kilomter"></i> End odometer</label>
+            <input type="text" id ="end_kilometer" name="end_kilometer" th:value="${contracts.end_kilometer}" placeholder="2000"></th>
+            </tr>
+    <th><input type ="submit" value="Add kilomter driven"></th>
+</form>
 </body>
 </html>

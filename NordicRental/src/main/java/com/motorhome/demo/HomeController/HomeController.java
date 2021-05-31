@@ -162,14 +162,19 @@ public class HomeController {
     public String deleteEmployee(@PathVariable("id") int id) {
         employeeService.deleteEmployee(id);
         return "redirect:/showEmployees";
-
     }
 
-    @GetMapping("/chooseContract{id}")
+    @GetMapping("/chooseContract/{id}")
     public String chooseContract(@PathVariable("id") int id, Model model) {
-        List<Contracts> contracts = contractService.findcontractid(id);
-        model.addAttribute("contractslist", contracts);
+        Contracts contracts = contractService.findcontractById(id);
+        model.addAttribute("contracts", contracts);
         return "home/endContract";
+    }
+
+    @PostMapping("/chooseContract/{id}")
+    public String chooseContract(@PathVariable("id") int id, @ModelAttribute Contracts c){
+        contractService.updatekilometer(id, c);
+        return "redirect:/showContracts";
     }
 }
 

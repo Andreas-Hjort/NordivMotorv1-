@@ -58,17 +58,34 @@ public class ContractRepo {
         template.update(sql);
     }
 
-    public List<Contracts> findContractByID(int id){
+    public Contracts findContractByID(int id){
         String sqlFindContract = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
                 "contracts.date_of_reserve, contracts.date_of_handin, \n" +
                 "contracts.total_price, dropoff.address, \n" +
-                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype \n" +
+                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, contracts.end_kilometer  \n" +
                 "FROM motorhome.contracts\n" +
                 "INNER JOIN motorhome.cars ON cars.id_cars = contracts.idcar INNER JOIN motorhome.customer ON customer.id_customer  = contracts.idcustomer\n" +
                 "INNER JOIN motorhome.ekstras ON ekstras.idekstras = contracts.id_ekstra INNER JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff WHERE id_contracts = ?";
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
-        return template.query(sqlFindContract, rowMapper, id);
+        List<Contracts> contractslist = template.query(sqlFindContract, rowMapper, id);
+        Contracts contracts = contractslist.get(0);
+        return contracts;
     }
+
+    public List<Contracts> findContractByIDList(int id){
+        String sqlFindContract = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
+                "contracts.date_of_reserve, contracts.date_of_handin, \n" +
+                "contracts.total_price, dropoff.address, \n" +
+                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, contracts.end_kilometer  \n" +
+                "FROM motorhome.contracts\n" +
+                "INNER JOIN motorhome.cars ON cars.id_cars = contracts.idcar INNER JOIN motorhome.customer ON customer.id_customer  = contracts.idcustomer\n" +
+                "INNER JOIN motorhome.ekstras ON ekstras.idekstras = contracts.id_ekstra INNER JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff WHERE id_contracts = ?";
+        RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
+        List<Contracts> contractslist = template.query(sqlFindContract, rowMapper, id);
+        return contractslist;
+    }
+
+
 
     public void setCarsbyid(Contracts c){
         String sql =  "SELECT id_cars, brand, type_cars, model, odometer, price_cars FROM motorhome.cars Where id_cars = ?";
@@ -90,6 +107,19 @@ public class ContractRepo {
         String sql = "UPDATE motorhome.Contract SET date_of_reserve = ?, date_of_handin WHERE id_contracts = ?";
         template.update(sql, input.getDate_of_Reserve(), input.getDate_of_handIn()  ,id);
 
+    }
+
+    public void updateKilometer(int id, Contracts input) {
+
+        String sql = "UPDATE motorhome.contracts SET end_kilometer = ? total_price = ? WHERE id_contracts = ?";
+        Contracts contracts = findContractByID(id);
+        setextrasid(contracts);
+        setCarsbyid(contracts);
+
+        double end_kilometer = input.getEnd_kilometer();
+        double endingprice = Calculator.contractEndingPrice(contracts);
+
+        template.update(sql, end_kilometer, endingprice,id);
     }
 
 
