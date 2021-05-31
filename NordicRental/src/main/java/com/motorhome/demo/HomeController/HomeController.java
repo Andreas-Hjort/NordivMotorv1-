@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sun.security.mscapi.CPublicKey;
 
 import java.util.List;
 
@@ -40,6 +39,7 @@ public class HomeController {
     public String index(Model model) {
         List<Person> customerlist = customerService.fetchALL();
         model.addAttribute("customers", customerlist);
+        System.out.println();
         return "home/showCustomer";
     }
 
@@ -163,6 +163,13 @@ public class HomeController {
         employeeService.deleteEmployee(id);
         return "redirect:/showEmployees";
 
+    }
+
+    @GetMapping("/chooseContract{id}")
+    public String chooseContract(@PathVariable("id") int id, Model model) {
+        List<Contracts> contracts = contractService.findcontractid(id);
+        model.addAttribute("contractslist", contracts);
+        return "home/endContract";
     }
 }
 

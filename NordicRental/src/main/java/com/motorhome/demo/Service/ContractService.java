@@ -1,9 +1,6 @@
 package com.motorhome.demo.Service;
 
-import com.motorhome.demo.Model.Contracts;
-import com.motorhome.demo.Model.Ekstras;
-import com.motorhome.demo.Model.Person;
-import com.motorhome.demo.Model.Dropoff;
+import com.motorhome.demo.Model.*;
 import com.motorhome.demo.Repository.ContractRepo;
 import com.motorhome.demo.Repository.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +23,7 @@ public class ContractService {
         contractRepo.addContract(c);
     }
 
+
     public Boolean deleteContract(int id){
         return contractRepo.deleteContract(id);
     }
@@ -34,7 +32,7 @@ public class ContractService {
         contractRepo.createContract(id);
     }
 
-    public Contracts findcontractid(int id){
+    public List<Contracts> findcontractid(int id){
         return contractRepo.findContractByID(id);
     }
 

@@ -1,21 +1,25 @@
 package com.motorhome.demo.Model;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.LinkedList;
+import java.util.List;
 
 
-@Entity
+
 public class Contracts {
 
-    @Id
     private int id_contracts;
     private int IDcar;
     private int IDcustomer;
     private String date_of_Reserve;
     private String date_of_handIn;
     private double end_kilometer;
-    private double price;
+    private double total_price;
     private String IDPickUp;
-    private int IDekstra;
+    private int ID_ekstra;
+
 
 
     // Fields from Customer
@@ -27,16 +31,78 @@ public class Contracts {
     private String brand;
     private String type_cars;
     private int odometer;
+    private double price_cars;
 
     // Fields from Extras
     private String extratype;
+    private double price_extra;
 
     //Dropoff
     private String address;
     private int zip;
     private int distance_in_kilometer;
 
-    public Contracts(){}
+    private boolean[] acList = new boolean[16];
+
+    //Lists
+
+    private Cars cars;
+    private Ekstras ekstras;
+
+    public Cars getCars() {
+        return cars;
+    }
+
+    public void setCars(Cars cars) {
+        this.cars = cars;
+    }
+
+    public Ekstras getEkstras() {
+        return ekstras;
+    }
+
+    public void setEkstras(Ekstras ekstras) {
+        this.ekstras = ekstras;
+    }
+
+    public double getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(double total_price) {
+        this.total_price = total_price;
+    }
+
+    public double getPrice_cars() {
+        return price_cars;
+    }
+
+    public void setPrice_cars(double price_cars) {
+        this.price_cars = price_cars;
+    }
+
+    public double getPrice_extra() {
+        return price_extra;
+    }
+
+    public void setPrice_extra(double price_extra) {
+        this.price_extra = price_extra;
+    }
+
+
+    public Contracts(){
+        for(int i = 0; i < acList.length; i++) {
+            acList[i] = false;
+        }
+    }
+
+    public boolean[] getAcList() {
+        return acList;
+    }
+
+    public void setAcList(boolean[] acList) {
+        this.acList = acList;
+    }
 
     public int getOdometer() {
         return odometer;
@@ -143,13 +209,7 @@ public class Contracts {
         this.end_kilometer = end_kilometer;
     }
 
-    public double getPrice() {
-        return price;
-    }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     public String getIDPickUp() {
         return IDPickUp;
@@ -159,16 +219,13 @@ public class Contracts {
         this.IDPickUp = IDPickUp;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+
+    public int getID_ekstra() {
+        return ID_ekstra;
     }
 
-    public int getIDekstra() {
-        return IDekstra;
-    }
-
-    public void setIDekstra(int IDekstra) {
-        this.IDekstra = IDekstra;
+    public void setID_ekstra(int ID_ekstra) {
+        this.ID_ekstra = ID_ekstra;
     }
     public String getAddress() {
         return address;

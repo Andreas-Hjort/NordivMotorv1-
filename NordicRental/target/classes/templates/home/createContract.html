@@ -59,21 +59,21 @@
         </tr>
     </form>
 
-<form action="/reservations/create" id="form" method="post">
+<form action="/reservations/create" method="post">
     <h1>Create reservation</h1>
      <br>
      <br/>
     <table class="tablecenter">
         <tr>
             <td><label>Autocamper</label></td>
-            <td><select name="motorhome_id">
-                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} + ' ' + ${cars.price} + kr " th:value="${cars.id_cars}"></option>
+            <td><select name="IDcar">
+                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} + ' ' + ${cars.price_cars} + kr " th:value="${cars.id_cars}"></option>
             </select>
             </td>
         </tr>
         <tr>
             <td><label>Choose Customer</label></td>
-            <td><select name="Customer_id">
+            <td><select name="IDcustomer">
                 <option th:each = "person: ${personlist}" th:text="${person.first_Name} + ' ' + ${person.last_Name} " th:value="${person.id_customer}"></option>
             </select>
             </td>
@@ -81,23 +81,23 @@
 
         <tr>
             <td><label>Reservation start</label></td>
-            <td><input type="datetime-local" step="1" th:field="*{contracts.date_of_Reserve}"> </td>
+            <td><input type="date" step="1" th:field="*{contracts.date_of_Reserve}"> </td>
         </tr>
 
         <tr>
             <td><label>Reservation end</label></td>
-            <td><input type="datetime-local" step="1" th:field="*{contracts.date_of_handIn}" required> </td>
+            <td><input type="date" step="1" th:field="*{contracts.date_of_handIn}" required> </td>
         </tr>
         <tr>
             <td><label>Add extras</label></td>
-            <td><select name="ekstras_id">
-                <option th:each = "ekstra: ${ekstraslist}" th:text="${ekstra.extratype} + ' ' + ${ekstra.price} + ' kr ' " th:value="${ekstra.idekstras}"></option>
+            <td><select name="ID_ekstra">
+                <option th:each = "ekstra: ${ekstraslist}" th:text="${ekstra.extratype} + ' ' + ${ekstra.price_extras} + ' kr ' " th:value="${ekstra.idekstras}"></option>
             </select>
             </td>
         </tr>
         <tr>
             <td><label>Add drop off point</label></td>
-            <td><select name="dropoff_id">
+            <td><select name="IDPickUp">
                 <option value="1" th:each = "Dropoff: ${drops}" th:text="'Address: ' + ${Dropoff.address} + ' Zip: ' + ${Dropoff.zip} + ' Distance: ' + ${Dropoff.distance_in_kilometer} " th:value="${Dropoff.id_dropoff}">1</option>
             </select>
             </td>

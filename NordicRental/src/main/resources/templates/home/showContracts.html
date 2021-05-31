@@ -72,12 +72,16 @@
             <td th:text="${contracts.last_Name}"/>
             <td th:text="${contracts.date_of_Reserve}"/>
             <td th:text="${contracts.date_of_handIn}"/>
-            <td th:text="${contracts.price}"/>
+            <td th:text="${contracts.total_price}"/>
             <td th:text="${contracts.address}"/>
             <td th:text="${contracts.zip}"/>
             <td th:text="${contracts.distance_in_kilometer}"/>
             <td th:text="${contracts.extratype}"/>
-            <td><button class="btn">End rental</button></td>
+            <td>
+                 <a th:href = "@{'/chooseContract/'+${contracts.id_contracts}}">
+                <button class="btn-edit" id="btn-edit">End reservation</button>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

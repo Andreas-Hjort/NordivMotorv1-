@@ -1,18 +1,21 @@
 package com.motorhome.demo.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Cars {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_cars;
     private String brand;
     private String model;
     private int beds;
     private int odometer;
-    private double price;
+    private double price_cars;
     private Boolean status;
     private Boolean cleaning;
     private Boolean service;
@@ -23,26 +26,26 @@ public class Cars {
     }
 
 
-    public Cars(int id_cars, String brand, String model, int beds, int odometer, double price, Boolean status, Boolean cleaning, Boolean service, String type_cars) {
+    public Cars(int id_cars, String brand, String model, int beds, int odometer, double price_cars, Boolean status, Boolean cleaning, Boolean service, String type_cars) {
         this.id_cars = id_cars;
         this.brand = brand;
         this.model = model;
         this.type_cars = type_cars;
         this.beds = beds;
         this.odometer = odometer;
-        this.price = price;
+        this.price_cars = price_cars;
         this.status = status;
         this.cleaning = cleaning;
         this.service = service;
 
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrice_cars() {
+        return price_cars;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice_cars(double price_cars) {
+        this.price_cars = price_cars;
     }
 
     public int getId_cars() {

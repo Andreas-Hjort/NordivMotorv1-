@@ -9,17 +9,17 @@ public class Ekstras {
     @Id
     private int idekstras;
     private String extratype;
-    private double price;
+    private double price_extras;
 
 
     public Ekstras() {
 
     }
 
-    public Ekstras(int idekstras, String extratype, double price) {
+    public Ekstras(int idekstras, String extratype, double price_extras) {
         this.idekstras = idekstras;
         this.extratype = extratype;
-        this.price = price;
+        this.price_extras = price_extras;
     }
 
     public int getIdekstras() {
@@ -38,11 +38,11 @@ public class Ekstras {
         this.extratype = extratype;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrice_extras() {
+        return price_extras;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice_extras(double price_extras) {
+        this.price_extras = price_extras;
     }
 }
