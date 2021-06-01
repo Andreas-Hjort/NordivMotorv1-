@@ -16,6 +16,9 @@ public class CarService {
     public List<Cars> fetchALL() {
         return carRepo.fetchALL();
     }
+    public List<Cars> fetchALLAvailable() {
+        return carRepo.fecthALLAvailable();
+    }
 
     public Cars addCar(Cars c) {
         return carRepo.addCars(c);

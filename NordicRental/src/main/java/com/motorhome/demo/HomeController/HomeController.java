@@ -43,13 +43,6 @@ public class HomeController {
         return "home/showCustomer";
     }
 
-    @GetMapping("/cleaning/{id}")
-    public String changeCleaning(@PathVariable("id") int id) {
-        carService.Cleaning(id);
-        return "redirect:/showCars";
-    }
-
-
     @GetMapping("/create")
     public String create() {
         return ("home/createCustomer");
@@ -61,6 +54,14 @@ public class HomeController {
         return "redirect:/showCustomer";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteCustomer(@PathVariable("id") int id) {
+        customerService.delete(id);
+        return "redirect:/showCustomer";
+    }
+
+
+//___________________________________________________CARS_____________________________________________________
     @GetMapping("/showCars")
     public String carIndex(Model model, Contracts c) {
         List<Cars> carsList = carService.fetchALL();
@@ -69,6 +70,25 @@ public class HomeController {
     }
 
 
+    @GetMapping("/cleaning/{id}")
+    public String changeCleaning(@PathVariable("id") int id) {
+        carService.Cleaning(id);
+        return "redirect:/showCars";
+    }
+
+    @PostMapping("/addCar")
+    public String addCar(@ModelAttribute Cars c){
+        carService.addCar(c);
+        return "redirect:/showCars";
+    }
+
+    @GetMapping("/service/{id}")
+    public String changeService(@PathVariable("id") int id){
+        carService.Service(id);
+        return "redirect:/showCars";
+    }
+
+//____________________________________________________Contracts__________________________________________________________
 
     @GetMapping("/showContracts")
     public String contractsIndex(Model model) {
@@ -76,13 +96,6 @@ public class HomeController {
         model.addAttribute("contractlist", contractList);
         return "home/showContracts";
     }
-
-    @GetMapping("/delete/{id}")
-    public String deleteCustomer(@PathVariable("id") int id) {
-        customerService.delete(id);
-        return "redirect:/showCustomer";
-    }
-
 
     @GetMapping("/deleteContract/{id}")
     public String deleteContract(@PathVariable("id") int id) {
@@ -92,15 +105,10 @@ public class HomeController {
         return "redirect:/showContracts";
     }
 
-    @GetMapping("/service/{id}")
-    public String changeService(@PathVariable("id") int id){
-        carService.Service(id);
-        return "redirect:/showCars";
-    }
 
     @GetMapping("/reserveCar")
     public String reserveCar(Model model) {
-        List<Cars> cars = carService.fetchALL();
+        List<Cars> cars = carService.fetchALLAvailable();
         List <Person> person = customerService.fetchALL();
         List<Ekstras> ekstra = ekstrasService.fetchAll();
         List<Dropoff> drops = dropoffService.fetchALL();
@@ -119,8 +127,8 @@ public class HomeController {
         }
 
 
-@PostMapping("/reservations/create")
-    public String submitContract(Contracts contracts, Model model) {
+   @PostMapping("/reservations/create")
+        public String submitContract(Contracts contracts, Model model) {
         List<Cars> cars = carService.fetchALL();
         List<Dropoff> drops = dropoffService.fetchALL();
         model.addAttribute(("contracts"), contracts);
@@ -128,14 +136,8 @@ public class HomeController {
         model.addAttribute("drops", drops);
         carService.Status(contracts.getIDcar());
         contractService.addContract(contracts);
-        return "redirect:/reserveCar";
-    }
-
-    @PostMapping("/addCar")
-    public String addCar(@ModelAttribute Cars c){
-        carService.addCar(c);
-        return "redirect:/showCars";
-    }
+        return "redirect:/showContracts";
+        }
 
     @PostMapping("/changedate/'+{contractID}")
     public String changedate(@PathVariable("ID") int id, @ModelAttribute Contracts c){
@@ -143,23 +145,6 @@ public class HomeController {
         return "redirect:/showContracts";
     }
 
-    @GetMapping("/showEmployees")
-    public String employeeIndex (Model model) {
-        List<Employee> employeeList = employeeService.fetchALL();
-        model.addAttribute("employees", employeeList);
-        return "home/showEmployees";
-    }
-
-    @PostMapping("/addEMP")
-    public String addEMP(@ModelAttribute Employee e){
-        employeeService.addEMP(e);
-        return "redirect:/showEmployees";
-    }
-    @GetMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable("id") int id) {
-        employeeService.deleteEmployee(id);
-        return "redirect:/showEmployees";
-    }
 
     @GetMapping("/chooseContract/{id}")
     public String chooseContract(@PathVariable("id") int id, Model model) {
@@ -194,6 +179,26 @@ public class HomeController {
         Contracts contracts = contractService.findcontractById(id);
         model.addAttribute("contracts", contracts);
         return "home/EndContract";
+    }
+
+//______________________________________________________EMPLOYEE_________________________________________________
+
+    @GetMapping("/showEmployees")
+    public String employeeIndex (Model model) {
+        List<Employee> employeeList = employeeService.fetchALL();
+        model.addAttribute("employees", employeeList);
+        return "home/showEmployees";
+    }
+
+    @PostMapping("/addEMP")
+    public String addEMP(@ModelAttribute Employee e){
+        employeeService.addEMP(e);
+        return "redirect:/showEmployees";
+    }
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteEmployee(@PathVariable("id") int id) {
+        employeeService.deleteEmployee(id);
+        return "redirect:/showEmployees";
     }
 
 }

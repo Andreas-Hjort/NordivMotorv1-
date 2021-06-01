@@ -58,26 +58,3 @@ tr:nth-child(odd){
     width: 100%;
     clear: both;
 }
-
-#welcomeHeader{
-    height: 100px;
-    width: 300px;
-    border: 1px solid black;
-    padding: 4px;
-    color: lightblue;
-    position: relative;
-    margin: auto;
-    text-align: center;
-}
-
-.welcomePage{
-    height: 300px;
-    width: 300px;
-    border: 1px solid black;
-    padding: 4px;
-    color: lightblue;
-    position: relative;
-    margin: auto;
-    text-align: center;
-
-}

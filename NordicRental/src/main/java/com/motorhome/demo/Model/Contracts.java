@@ -47,6 +47,7 @@ public class Contracts {
 
     private Cars cars;
     private Ekstras ekstras;
+    private Dropoff dropoff;
 
     public Cars getCars() {
         return cars;
@@ -247,5 +248,13 @@ public class Contracts {
         this.distance_in_kilometer = distance_in_kilometer;
     }
 
+
+    public Dropoff getDropoff() {
+        return dropoff;
+    }
+
+    public void setDropoff(Dropoff dropoff) {
+        this.dropoff = dropoff;
+    }
 }
 

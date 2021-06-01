@@ -111,8 +111,8 @@ public class Cars {
         this.service = service;
     }
 
-    public String getType(){return type_cars;}
+    public String getType_cars(){return type_cars;}
 
-    public void setType(String type_cars){this.type_cars = type_cars;}
+    public void setType_cars(String type_cars){this.type_cars = type_cars;}
 
 }

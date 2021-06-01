@@ -31,7 +31,7 @@
         <li><a href="/showEmployees">Show Employees</a> </li>
       </ul>
     </li>
-    <li><a href="#">About us</a>
+    <li><a href="#">Contact us</a>
       <ul>
         <li><a href ="">Nordic Motorhomes</a> </li>
         <li><a href ="https://www.google.com/maps/place/Christian+4+Vej+53,+6000+Kolding/@55.472469,9.4883382,17z/data=!3m1!4b1!4m5!3m4!1s0x464ca1e7593e6a0d:0x87e7bc609fd75b49!8m2!3d55.472469!4d9.4905269">Christian 4 vej 53</a>
@@ -48,39 +48,39 @@
   <form action="addCar" method="post">
     <tr>
       <th><label for="brand"><i class="fa-lastmame"></i> Car brand</label>
-        <input type="text" id="brand" name="brand" placeholder="Enter brand">
+        <input type="text" id="brand" name="brand" size="13" placeholder="Enter brand">
       </th>
       <th>
         <label for="model"><i class="fa fa-envelope"></i> Car model</label>
-        <input type="text" id="model" name="model" placeholder="Enter car model">
+        <input type="text" id="model" name="model" size="13" placeholder="Enter car model">
       </th>
       <th>
-        <label for="type"><i class="fa fa-address-card-o"></i> Car type</label>
-        <input type="text" id="type" name="type" placeholder="Enter car type">
+        <label for="type_cars"><i class="fa fa-address-card-o"></i> Car type</label>
+        <input type="text" id="type_cars" name="type_cars" size="13" placeholder="Enter car type">
       </th>
       <th>
         <label for="beds"><i class="fa fa-institution"></i> Beds</label>
-        <input type="text" id="beds" name="beds" placeholder="Enter amount of beds">
+        <input type="text" id="beds" name="beds" size="13" placeholder="Enter beds">
       </th>
       <th>
         <label for="odometer"><i class="fa fa-institution"></i> Odometer</label>
-        <input type="text" id="odometer" name="odometer" placeholder="Enter amount of km.">
+        <input type="text" id="odometer" name="odometer" size="13" placeholder="Enter km.">
       </th>
       <th>
         <label for="price_cars"><i class="fa fa-institution"></i> Price</label>
-        <input type="text" id="price_cars" name="price_cars" placeholder="Enter price">
+        <input type="text" id="price_cars" name="price_cars" size="13" placeholder="Enter price">
       </th>
       <th>
         <label for="status"><i class="fa fa-institution"></i> Status</label>
-        <input type="text" id="status" name="status" placeholder="Enter false">
+        <input type="text" id="status" name="status" size="13" placeholder="Enter false">
       </th>
       <th>
         <label for="cleaning"><i class="fa fa-institution"></i> Cleaning</label>
-        <input type="text" id="cleaning" name="cleaning" placeholder="Enter false">
+        <input type="text" id="cleaning" name="cleaning" size="13" placeholder="Enter false">
       </th>
       <th>
         <label for="service"><i class="fa fa-institution"></i> Service</label>
-        <input type="text" id="service" name="service" placeholder="Enter false">
+        <input type="text" id="service" name="service" size="13" placeholder="Enter false">
       </th>
       <th>
         <input type="submit" value="Confirm">
@@ -109,7 +109,7 @@
     <td th:text="${Cars.id_cars}" />
     <td th:text="${Cars.brand}" />
     <td th:text="${Cars.model}" />
-    <td th:text="${Cars.type}" />
+    <td th:text="${Cars.type_cars}" />
     <td th:text="${Cars.beds}" />
     <td th:text="${Cars.odometer}" />
     <td th:text="${Cars.price_cars}" />

@@ -15,8 +15,8 @@ public class Calculator {
         double seasonRate = calculateSeason(contracts.getDate_of_Reserve());
         double motorhomePrice = contracts.getCars().getPrice_cars() * days;
         double extraPrice = contracts.getEkstras().getPrice_extras();
-        double finalPrice = ((motorhomePrice * seasonRate) + extraPrice);
-
+        double dropoffPrice = contracts.getDropoff().getDistance_in_kilometer() * 0.70;
+        double finalPrice = ((motorhomePrice * seasonRate) + extraPrice + dropoffPrice);
 
         return finalPrice;
     }

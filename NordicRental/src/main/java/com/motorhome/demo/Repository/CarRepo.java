@@ -16,6 +16,12 @@ public class CarRepo {
     JdbcTemplate template;
 
     public List<Cars> fetchALL() {
+        String sql = "SELECT * FROM motorhome.cars";
+        RowMapper<Cars> rowMapper = new BeanPropertyRowMapper<>(Cars.class);
+        return template.query(sql, rowMapper);
+    }
+
+    public List<Cars> fecthALLAvailable(){
         String sql = "SELECT * FROM motorhome.cars WHERE status = false";
         RowMapper<Cars> rowMapper = new BeanPropertyRowMapper<>(Cars.class);
         return template.query(sql, rowMapper);
@@ -23,7 +29,7 @@ public class CarRepo {
 
     public Cars addCars(Cars c) {
         String sql = "INSERT INTO motorhome.cars VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, c.getId_cars(), c.getBrand(), c.getType(), c.getModel(), c.getBeds(), c.getOdometer(), c.getPrice_cars(), c.getStatus(), c.getCleaning(), c.getService());
+        template.update(sql, c.getId_cars(), c.getBrand(), c.getType_cars(), c.getModel(), c.getBeds(), c.getOdometer(), c.getPrice_cars(), c.getStatus(), c.getCleaning(), c.getService());
         return null;
     }
 

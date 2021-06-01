@@ -40,13 +40,13 @@ public class ContractRepo {
 
         setCarsbyid(c);
         setextrasid(c);
-
+        setDropoff(c);
 
         double startingPrice = Calculator.rentalTotalPricing(c);
 
         template.update(sql,c.getId_contracts() ,carfk, customerfk, start_date,
-               end_date
-                ,kilomterdriven, startingPrice, pickupfk, ekstrasfk, fuel);
+               end_date, fuel
+                ,kilomterdriven, startingPrice, pickupfk, ekstrasfk);
     }
 
     public Boolean deleteContract(int id){
@@ -59,7 +59,7 @@ public class ContractRepo {
         String sqlFindContract = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
                 "contracts.date_of_reserve, contracts.date_of_handin, \n" +
                 "contracts.total_price, dropoff.address, \n" +
-                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, contracts.end_kilometer, contracts.fuel  \n" +
+                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, ekstras.price_extras, contracts.end_kilometer, contracts.fuel  \n" +
                 "FROM motorhome.contracts\n" +
                 "INNER JOIN motorhome.cars ON cars.id_cars = contracts.idcar INNER JOIN motorhome.customer ON customer.id_customer  = contracts.idcustomer\n" +
                 "INNER JOIN motorhome.ekstras ON ekstras.idekstras = contracts.id_ekstra INNER JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff WHERE id_contracts = ?";
@@ -79,11 +79,18 @@ public class ContractRepo {
     }
 
     public void setextrasid(Contracts c){
-        String sql =  "SELECT idekstras, extratype, price_extras FROM motorhome.ekstras Where idekstras = ?";
+        String sql = "SELECT idekstras, extratype, price_extras FROM motorhome.ekstras Where idekstras = ?";
 
         RowMapper<Ekstras> rowMapper = new BeanPropertyRowMapper<>(Ekstras.class);
-        List<Ekstras> ekstrasList = template.query(sql, rowMapper, c.getIDcar());
+        List<Ekstras> ekstrasList = template.query(sql, rowMapper, c.getID_ekstra());
         c.setEkstras(ekstrasList.get(0));
+    }
+
+    public void setDropoff(Contracts c){
+        String sql = "SELECT address, zip, distance_in_kilometer FROM motorhome.dropoff WHERE id_dropoff = ?";
+        RowMapper<Dropoff> rowMapper = new BeanPropertyRowMapper<>(Dropoff.class);
+        List<Dropoff> dropoffs = template.query(sql, rowMapper, c.getIDPickUp() );
+        c.setDropoff(dropoffs.get(0));
     }
 
     public void updateContract(int id, Contracts input) {

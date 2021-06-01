@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Create Contract</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="createStyle.css">
+    <title>Title</title>
+    <link href="../MyCSS.css" rel="stylesheet" type="text/css">
+    <link href="../style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 <nav>
     <p><a href="/">Nordic Motorhomes</a></p>
@@ -23,9 +24,12 @@
                 <li><a href="/reserveCar">Reserve Cars</a></li>
             </ul>
         </li>
-        <li><a href="#">Statistic</a>
+        <li><a href="#">Employee</a>
+            <ul>
+                <li><a href="/showEmployees">Show Employees</a> </li>
+            </ul>
         </li>
-        <li><a href="#">About us</a>
+        <li><a href="#">Contact us</a>
             <ul>
                 <li><a href ="">Nordic Motorhomes</a> </li>
                 <li><a href ="https://www.google.com/maps/place/Christian+4+Vej+53,+6000+Kolding/@55.472469,9.4883382,17z/data=!3m1!4b1!4m5!3m4!1s0x464ca1e7593e6a0d:0x87e7bc609fd75b49!8m2!3d55.472469!4d9.4905269">Christian 4 vej 53</a>
@@ -39,73 +43,83 @@
 </nav>
 
 
-
 <div class="wrapperContact" >
     <form action="/dropoff/create" method="post">
-        <h1> Drop off point (optional)</h1>
-        <tr>
-        <th><label for="distance_in_kilometer"><i class="fa-kilometer"></i> Start odometer</label>
-        <input type="text" id="distance_in_kilometer" name="distance_in_kilometer" placeholder="300"></th>
-        <br>
-        <br />
-        <th><label for="address"><i class="fa-address"></i> Address</label>
-        <input type="text" id="address" name="address" placeholder="Holger Danskes vej 17"></th>
-        <br>
-        <br/>
-        <th><label for="zip"><i class="fa-address"></i> Zip</label>
-        <input type="text" id="zip" name="zip" placeholder="2000"></th>
-        <br>
-        <br/>
-        <th><input type="submit" value="Add drop off point"></th>
-        </tr>
+        <table class="tablecenter">
+            <br>
+            <br/>
+            <th><label> <i class="fa-kilometer"></i> Drop of point optional</label>
+                <br>
+                <br/>
+                <tr>
+                    <th><label for="distance_in_kilometer"><i class="fa-kilometer"></i> Start odometer</label>
+                        <input type="text" id="distance_in_kilometer" name="distance_in_kilometer" placeholder="300"></th>
+                    <br>
+                    <br/>
+                    <th><label for="address"><i class="fa-address"></i> Address</label>
+                        <input type="text" id="address" name="address" placeholder="Holger Danskes vej 17"></th>
+                    <br>
+                    <br/>
+                    <th><label for="zip"><i class="fa-address"></i> Zip</label>
+                        <input type="text" id="zip" name="zip" placeholder="2000"></th>
+                    <br>
+                    <br/>
+                    <th><input type="submit" value="Add drop off point"></th>
+                </tr>
+        </table>
     </form>
 
-<form action="/reservations/create" method="post">
-    <h1>Create reservation</h1>
-     <br>
-     <br/>
-    <table class="tablecenter">
-        <tr>
-            <td><label>Autocamper</label></td>
-            <td><select name="IDcar">
-                <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} + ' ' + ${cars.price_cars} + kr " th:value="${cars.id_cars}"></option>
-            </select>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Choose Customer</label></td>
-            <td><select name="IDcustomer">
-                <option th:each = "person: ${personlist}" th:text="${person.first_Name} + ' ' + ${person.last_Name} " th:value="${person.id_customer}"></option>
-            </select>
-            </td>
-        </tr>
+    <form action="/reservations/create" method="post">
+        <br>
+        <br/>
+        <table class="tablecenter">
+            <br>
+            <br/>
+            <th><label> <i class="fa-kilometer"></i> Create reservation</label>
+                <tr>
+                    <td><label>Autocamper</label></td>
+                    <td><select name="IDcar">
+                        <option th:each = "cars: ${carslist}" th:text="${cars.brand} + ' ' + ${cars.model} + ' ' + ${cars.price_cars} + kr " th:value="${cars.id_cars}"></option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Choose Customer</label></td>
+                    <td><select name="IDcustomer">
+                        <option th:each = "person: ${personlist}" th:text="${person.first_Name} + ' ' + ${person.last_Name} " th:value="${person.id_customer}"></option>
+                    </select>
+                    </td>
+                </tr>
 
-        <tr>
-            <td><label>Reservation start</label></td>
-            <td><input type="date" step="1" th:field="*{contracts.date_of_Reserve}"> </td>
-        </tr>
+                <tr>
+                    <td><label>Reservation start</label></td>
+                    <td><input type="date" step="1" th:field="*{contracts.date_of_Reserve}"> </td>
+                </tr>
 
-        <tr>
-            <td><label>Reservation end</label></td>
-            <td><input type="date" step="1" th:field="*{contracts.date_of_handIn}" required> </td>
-        </tr>
-        <tr>
-            <td><label>Add extras</label></td>
-            <td><select name="ID_ekstra">
-                <option th:each = "ekstra: ${ekstraslist}" th:text="${ekstra.extratype} + ' ' + ${ekstra.price_extras} + ' kr ' " th:value="${ekstra.idekstras}"></option>
-            </select>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Add drop off point</label></td>
-            <td><select name="IDPickUp">
-                <option value="1" th:each = "Dropoff: ${drops}" th:text="'Address: ' + ${Dropoff.address} + ' Zip: ' + ${Dropoff.zip} + ' Distance: ' + ${Dropoff.distance_in_kilometer} " th:value="${Dropoff.id_dropoff}">1</option>
-            </select>
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="Confirm">
-</form>
+                <tr>
+                    <td><label>Reservation end</label></td>
+                    <td><input type="date" step="1" th:field="*{contracts.date_of_handIn}" required> </td>
+                </tr>
+                <tr>
+                    <td><label>Add extras</label></td>
+                    <td><select name="ID_ekstra">
+                        <option th:each = "ekstra: ${ekstraslist}" th:text="${ekstra.extratype} + ' ' + ${ekstra.price_extras} + ' kr ' " th:value="${ekstra.idekstras}"></option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Add drop off point</label></td>
+                    <td><select name="IDPickUp">
+                        <option value="1" th:each = "Dropoff: ${drops}" th:text="'Address: ' + ${Dropoff.address} + ' Zip: ' + ${Dropoff.zip} + ' Distance: ' + ${Dropoff.distance_in_kilometer} " th:value="${Dropoff.id_dropoff}">1</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Confirm"></td>
+                </tr>
+        </table>
+
+    </form>
 </div>
 </body>
 </html>
