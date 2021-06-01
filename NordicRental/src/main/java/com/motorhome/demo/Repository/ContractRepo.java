@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import com.motorhome.demo.Utilities.DateCalc;
 
 import java.util.List;
 
@@ -113,12 +112,6 @@ public class ContractRepo {
         template.update(sql, calc, id);
     }
 
-
-    public int createddropoffpoint(Dropoff dropoff){
-        String sql = "INSERT INTO motorhome.dropoff VALUES (?, ? , ?, ?)";
-        template.update(sql ,dropoff.getId_dropoff(), dropoff.getAddress(), dropoff.getZip() , dropoff.getDistance_in_kilometer());
-        return dropoff.getId_dropoff();
-    }
 
     public void cancelationPrice(int id){
         String sql = "UPDATE motorhome.contracts SET total_price = ? WHERE id_contracts = ?";
