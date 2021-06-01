@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+/**
+ * @Author Daniel Benjamin Jones
+ */
+
 @Entity
 public class Cars {
 

@@ -3,6 +3,10 @@ package com.motorhome.demo.Model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ *@Author Axel Gundelach
+ */
+
 @Entity
 public class Person {
 
@@ -16,6 +20,7 @@ public class Person {
  private int zip;
  private int licensenr;
  private String licensedate;
+
 
  public Person(int id_customer, String first_Name, String last_Name, int phone, String mail, String address, int zip, int licensenr, String licensedate) {
   this.id_customer = id_customer;

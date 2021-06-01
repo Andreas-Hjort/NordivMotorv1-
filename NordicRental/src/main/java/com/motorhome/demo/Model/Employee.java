@@ -6,6 +6,10 @@ import javax.persistence.Id;
 @Entity
 public class Employee {
 
+    /**
+     * @Author Viktor Prieme
+     */
+
     @Id
     private int id_employee;
     private String first_Name;

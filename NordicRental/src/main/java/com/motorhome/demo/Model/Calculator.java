@@ -7,6 +7,13 @@ import java.util.List;
 public class Calculator {
 
 
+    /**
+     * Method that adds all the price values from the database and adds together
+     * @param contracts
+     * @return The total price when you create a reservation
+     * @Author Andreas Hjort
+     */
+
     public static double rentalTotalPricing(Contracts contracts){
         LocalDate start_date = LocalDate.parse(contracts.getDate_of_Reserve());
         LocalDate end_date = LocalDate.parse(contracts.getDate_of_handIn());
@@ -20,6 +27,13 @@ public class Calculator {
 
         return finalPrice;
     }
+
+    /**
+     * Method that gives a new price when you end a Contract
+     * @param contracts
+     * @return The calculated price with ekstra kilometer driven and fuel lvl
+     * @Author Andreas Hjort
+     */
 
     public static double contractEndingPrice(Contracts contracts){
         LocalDate start_date = LocalDate.parse(contracts.getDate_of_Reserve());
@@ -37,6 +51,13 @@ public class Calculator {
 
        return contracts.getTotal_price() + averagePricing;
     }
+
+    /**
+     * Adds the the cancelation fee based on how many days before the reservation was happening
+     * @param contracts
+     * @return the final price with the cancelationfee
+     * @Author Andreas Hjort
+     */
 
     public static double contractCancelationFee(Contracts contracts){
         LocalDate start_date = LocalDate.parse(contracts.getDate_of_Reserve());
@@ -62,6 +83,12 @@ public class Calculator {
         }
         return finalPrice;
     }
+
+    /**
+     * Calculates the season rate
+     * @param date
+     * @return
+     */
 
     public static double calculateSeason(String date) {
         int month = Integer.parseInt(date.substring(5, 7));

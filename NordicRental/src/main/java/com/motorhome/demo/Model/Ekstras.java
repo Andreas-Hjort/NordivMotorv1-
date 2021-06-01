@@ -6,6 +6,10 @@ import javax.persistence.Id;
 @Entity
 public class Ekstras {
 
+    /**
+     * @Author Andreas Hjort
+     */
+
     @Id
     private int idekstras;
     private String extratype;

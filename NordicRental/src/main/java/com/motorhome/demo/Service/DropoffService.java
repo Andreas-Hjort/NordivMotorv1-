@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @Author Andreas Hjort, Daniel Benjamin Jones, Viktor Prieme og Axel Gundelach
+ */
+
 @Service
 public class DropoffService {
 

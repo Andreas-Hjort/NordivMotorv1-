@@ -15,11 +15,21 @@ public class CarRepo {
     @Autowired
     JdbcTemplate template;
 
+    /**
+     * @Author Daniel Benjamin Jones
+     * @return A list based on the object Car
+     */
+
     public List<Cars> fetchALL() {
         String sql = "SELECT * FROM motorhome.cars";
         RowMapper<Cars> rowMapper = new BeanPropertyRowMapper<>(Cars.class);
         return template.query(sql, rowMapper);
     }
+
+    /**
+     * @Author Daniel Benjamin Jones
+     * @return A list where the Status is false
+     */
 
     public List<Cars> fecthALLAvailable(){
         String sql = "SELECT * FROM motorhome.cars WHERE status = false";
@@ -37,6 +47,12 @@ public class CarRepo {
         String sql = "DELETE FROM motorhome.cars WHERE id_cars = ?";
         return template.update(sql, id) > 0;
     }
+
+    /**All the three methodes listed below changes a boolean based on a id to either false or true
+     * @Author Daniel Benjamin jones
+     * @param id
+     * @return
+     */
 
     public boolean Cleaning(int id) {
         String sql = "UPDATE motorhome.cars SET cleaning = NOT cleaning WHERE id_cars = ?";

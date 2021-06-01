@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @Author Viktor Prieme
+ */
+
 @Repository
 public class EmployeeRepo {
 

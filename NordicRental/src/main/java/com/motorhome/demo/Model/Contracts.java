@@ -6,7 +6,9 @@ import javax.persistence.Id;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * @Author Andreas Hjort, Viktor Prieme, Axel Gundelach og Daniel Benjamin Jones
+ */
 
 public class Contracts {
 
@@ -43,8 +45,7 @@ public class Contracts {
     private int zip;
     private int distance_in_kilometer;
 
-    //Lists
-
+    //Object references
     private Cars cars;
     private Ekstras ekstras;
     private Dropoff dropoff;

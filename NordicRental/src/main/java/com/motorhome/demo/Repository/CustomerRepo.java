@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @Author Viktor prieme
+ */
+
 @Repository
 public class CustomerRepo {
 

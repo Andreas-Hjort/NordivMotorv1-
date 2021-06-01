@@ -15,6 +15,11 @@ public class ContractRepo {
     @Autowired
     JdbcTemplate template;
 
+    /**
+     * @Author Andreas Hjort
+     * @return
+     */
+
     public List<Contracts> fetchALL(){
         String sql = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
                 "contracts.date_of_reserve, contracts.date_of_handin, \n" +
@@ -26,6 +31,15 @@ public class ContractRepo {
         RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
         return template.query(sql, rowMapper);
     }
+
+
+    /**
+     * Method that Creates a new contract in the database. The methods sets three different lists,
+     * so the data can be used in the Calculator class. The price is set based on the Calculator.rentalTotalPricing
+     * @Author Axel Gundelach
+     * @param c
+     */
+
 
     public void addContract(Contracts c){
         String sql = "INSERT INTO motorhome.contracts VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -49,11 +63,23 @@ public class ContractRepo {
                 ,kilomterdriven, startingPrice, pickupfk, ekstrasfk);
     }
 
+    /**
+     * @Author Viktor Prieme
+     * @param id
+     * @return
+     */
+
     public Boolean deleteContract(int id){
         String sql = "DELETE FROM motorhome.contracts WHERE id_contracts = ?";
         return template.update(sql, id) > 0;
     }
 
+
+    /** This method finds a contract based on id and inserts it into a list so the data can get access
+     * @Author Andreas Hjort
+     * @param id
+     * @return object contracts
+     */
 
     public Contracts findContractByID(int id){
         String sqlFindContract = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
@@ -69,6 +95,12 @@ public class ContractRepo {
         return contracts;
     }
 
+
+    /** The three methods below sets the values of a specific id from the database.
+     * They will then insert these to a list so they are accessible for future calculations
+     * @Author Andreas Hjort
+     * @param c
+     */
 
     public void setCarsbyid(Contracts c){
         String sql =  "SELECT id_cars, brand, type_cars, model, odometer, price_cars FROM motorhome.cars Where id_cars = ?";
@@ -93,11 +125,24 @@ public class ContractRepo {
         c.setDropoff(dropoffs.get(0));
     }
 
+
+    /**
+     * @Author Axel Gundelach
+     * @param id
+     * @param input
+     */
+
     public void updateContract(int id, Contracts input) {
         String sql = "UPDATE motorhome.Contract SET date_of_reserve = ?, date_of_handin WHERE id_contracts = ?";
         template.update(sql, input.getDate_of_Reserve(), input.getDate_of_handIn()  ,id);
 
     }
+
+    /**
+     * @Author Axel Gundelach
+     * @param id
+     * @param input
+     */
 
     public void updateKilometer(int id, Contracts input) {
         String sql = "UPDATE motorhome.contracts SET end_kilometer = ?  WHERE id_contracts = ?";
@@ -105,11 +150,21 @@ public class ContractRepo {
         template.update(sql, end_kilometer,id);
     }
 
+    /**
+     * @Author Daniel Benjamin Jones
+     * @param id
+     * @return
+     */
     public boolean changeFuel(int id) {
         String sql = "UPDATE motorhome.contracts SET fuel = NOT fuel WHERE id_contracts = ?";
         return template.update(sql, id) > 0;
     }
 
+    /**
+     * @Author Daniel Benjamin Jones
+     * @param id
+     * @param c
+     */
     public void changeEndingPriceKilometer(int id, Contracts c ){
         updateKilometer(id, c);
         Contracts contracts = findContractByID(id);
@@ -119,6 +174,10 @@ public class ContractRepo {
         template.update(sql, calc, id);
     }
 
+    /**
+     * @Author Viktor Prieme
+     * @param id
+     */
 
     public void cancelationPrice(int id){
         String sql = "UPDATE motorhome.contracts SET total_price = ? WHERE id_contracts = ?";
