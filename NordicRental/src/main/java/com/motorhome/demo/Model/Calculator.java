@@ -16,6 +16,8 @@ public class Calculator {
         double motorhomePrice = contracts.getCars().getPrice_cars() * days;
         double extraPrice = contracts.getEkstras().getPrice_extras();
         double finalPrice = ((motorhomePrice * seasonRate) + extraPrice);
+
+
         return finalPrice;
     }
 
@@ -23,16 +25,42 @@ public class Calculator {
         LocalDate start_date = LocalDate.parse(contracts.getDate_of_Reserve());
         LocalDate end_date = LocalDate.parse(contracts.getDate_of_handIn());
         int days = (int) ChronoUnit.DAYS.between(start_date, end_date);
-
-        double kilomterdriven = contracts.getEnd_kilometer() - contracts.getCars().getOdometer();
+        boolean fuel = contracts.getFuel();
+        double kilomterdriven = contracts.getEnd_kilometer() - contracts.getOdometer();
         double kilomterPricing = kilomterdriven * 0.7;
         double averagePricing = 0;
-
         if((days * 400) < kilomterdriven){
             averagePricing = kilomterPricing;
+        } if (fuel){
+            averagePricing = averagePricing + 70;
         }
 
-       return rentalTotalPricing(contracts) + averagePricing;
+       return contracts.getTotal_price() + averagePricing;
+    }
+
+    public static double contractCancelationFee(Contracts contracts){
+        LocalDate start_date = LocalDate.parse(contracts.getDate_of_Reserve());
+        LocalDate cancelationDate = LocalDate.now();
+        double total_price = contracts.getTotal_price();
+        double finalPrice = 0;
+
+        int days = (int) ChronoUnit.DAYS.between(start_date, cancelationDate);
+
+        if(days < 50){
+            double discount20 = total_price * 0.20;
+            if(discount20 < 200) {
+                finalPrice = 200;
+            } else {
+                finalPrice = discount20;
+            }
+        }else if(days <= 49){
+           finalPrice = total_price * 0.50;
+        }else if(days < 15){
+            finalPrice= total_price * 0.80;
+        }else if(days == 1){
+            finalPrice = total_price * 0.95;
+        }
+        return finalPrice;
     }
 
     public static double calculateSeason(String date) {

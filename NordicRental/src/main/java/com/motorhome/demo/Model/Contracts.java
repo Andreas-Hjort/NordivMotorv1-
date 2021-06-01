@@ -19,6 +19,7 @@ public class Contracts {
     private double total_price;
     private String IDPickUp;
     private int ID_ekstra;
+    private boolean fuel;
 
 
 
@@ -41,8 +42,6 @@ public class Contracts {
     private String address;
     private int zip;
     private int distance_in_kilometer;
-
-    private boolean[] acList = new boolean[16];
 
     //Lists
 
@@ -91,17 +90,14 @@ public class Contracts {
 
 
     public Contracts(){
-        for(int i = 0; i < acList.length; i++) {
-            acList[i] = false;
-        }
     }
 
-    public boolean[] getAcList() {
-        return acList;
+    public boolean getFuel() {
+        return fuel;
     }
 
-    public void setAcList(boolean[] acList) {
-        this.acList = acList;
+    public void setFuel(boolean fuel) {
+        this.fuel = fuel;
     }
 
     public int getOdometer() {

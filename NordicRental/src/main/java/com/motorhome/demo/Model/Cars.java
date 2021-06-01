@@ -9,7 +9,6 @@ import javax.persistence.Id;
 public class Cars {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_cars;
     private String brand;
     private String model;

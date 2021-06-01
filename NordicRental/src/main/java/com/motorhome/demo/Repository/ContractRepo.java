@@ -20,7 +20,7 @@ public class ContractRepo {
         String sql = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
                 "contracts.date_of_reserve, contracts.date_of_handin, \n" +
                 "contracts.total_price, dropoff.address, \n" +
-                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype \n" +
+                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, contracts.fuel, contracts.end_kilometer \n" +
                 "FROM motorhome.contracts\n" +
                 "INNER JOIN motorhome.cars ON cars.id_cars = contracts.idcar INNER JOIN motorhome.customer ON customer.id_customer  = contracts.idcustomer\n" +
                 "INNER JOIN motorhome.ekstras ON ekstras.idekstras = contracts.id_ekstra INNER JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff";
@@ -29,7 +29,7 @@ public class ContractRepo {
     }
 
     public void addContract(Contracts c){
-        String sql = "INSERT INTO motorhome.contracts VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO motorhome.contracts VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String start_date = c.getDate_of_Reserve();
         String end_date = c.getDate_of_handIn();
         int carfk = c.getIDcar();
@@ -37,6 +37,8 @@ public class ContractRepo {
         int ekstrasfk = c.getID_ekstra();
         String pickupfk = c.getIDPickUp();
         double kilomterdriven = 0;
+        boolean fuel = true;
+
         setCarsbyid(c);
         setextrasid(c);
 
@@ -45,7 +47,7 @@ public class ContractRepo {
 
         template.update(sql,c.getId_contracts() ,carfk, customerfk, start_date,
                end_date
-                ,kilomterdriven, startingPrice, pickupfk, ekstrasfk);
+                ,kilomterdriven, startingPrice, pickupfk, ekstrasfk, fuel);
     }
 
     public Boolean deleteContract(int id){
@@ -53,16 +55,12 @@ public class ContractRepo {
         return template.update(sql, id) > 0;
     }
 
-    public void createContract(int id){
-        String sql = "INSERT INTO motorhome.contracts (idcar) SELECT id FROM motorhome.cars WHERE id_contracts = " + id;
-        template.update(sql);
-    }
 
     public Contracts findContractByID(int id){
         String sqlFindContract = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
                 "contracts.date_of_reserve, contracts.date_of_handin, \n" +
                 "contracts.total_price, dropoff.address, \n" +
-                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, contracts.end_kilometer  \n" +
+                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, contracts.end_kilometer, contracts.fuel  \n" +
                 "FROM motorhome.contracts\n" +
                 "INNER JOIN motorhome.cars ON cars.id_cars = contracts.idcar INNER JOIN motorhome.customer ON customer.id_customer  = contracts.idcustomer\n" +
                 "INNER JOIN motorhome.ekstras ON ekstras.idekstras = contracts.id_ekstra INNER JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff WHERE id_contracts = ?";
@@ -71,20 +69,6 @@ public class ContractRepo {
         Contracts contracts = contractslist.get(0);
         return contracts;
     }
-
-    public List<Contracts> findContractByIDList(int id){
-        String sqlFindContract = "SELECT contracts.id_contracts, cars.brand, cars.model, cars.type_cars, cars.odometer, customer.first_name, customer.last_name, \n" +
-                "contracts.date_of_reserve, contracts.date_of_handin, \n" +
-                "contracts.total_price, dropoff.address, \n" +
-                "dropoff.zip, dropoff.distance_in_kilometer, ekstras.extratype, contracts.end_kilometer  \n" +
-                "FROM motorhome.contracts\n" +
-                "INNER JOIN motorhome.cars ON cars.id_cars = contracts.idcar INNER JOIN motorhome.customer ON customer.id_customer  = contracts.idcustomer\n" +
-                "INNER JOIN motorhome.ekstras ON ekstras.idekstras = contracts.id_ekstra INNER JOIN motorhome.dropoff ON contracts.idpickup = dropoff.id_dropoff WHERE id_contracts = ?";
-        RowMapper<Contracts> rowMapper = new BeanPropertyRowMapper<>(Contracts.class);
-        List<Contracts> contractslist = template.query(sqlFindContract, rowMapper, id);
-        return contractslist;
-    }
-
 
 
     public void setCarsbyid(Contracts c){
@@ -110,16 +94,23 @@ public class ContractRepo {
     }
 
     public void updateKilometer(int id, Contracts input) {
-
-        String sql = "UPDATE motorhome.contracts SET end_kilometer = ? total_price = ? WHERE id_contracts = ?";
-        Contracts contracts = findContractByID(id);
-        setextrasid(contracts);
-        setCarsbyid(contracts);
-
+        String sql = "UPDATE motorhome.contracts SET end_kilometer = ?  WHERE id_contracts = ?";
         double end_kilometer = input.getEnd_kilometer();
-        double endingprice = Calculator.contractEndingPrice(contracts);
+        template.update(sql, end_kilometer,id);
+    }
 
-        template.update(sql, end_kilometer, endingprice,id);
+    public boolean changeFuel(int id) {
+        String sql = "UPDATE motorhome.contracts SET fuel = NOT fuel WHERE id_contracts = ?";
+        return template.update(sql, id) > 0;
+    }
+
+    public void changeEndingPriceKilometer(int id, Contracts c ){
+        updateKilometer(id, c);
+        Contracts contracts = findContractByID(id);
+        String sql = "UPDATE motorhome.contracts SET total_price = ? WHERE id_contracts = ?";
+        double calc = Calculator.contractEndingPrice(contracts);
+
+        template.update(sql, calc, id);
     }
 
 
@@ -129,5 +120,11 @@ public class ContractRepo {
         return dropoff.getId_dropoff();
     }
 
+    public void cancelationPrice(int id){
+        String sql = "UPDATE motorhome.contracts SET total_price = ? WHERE id_contracts = ?";
+        Contracts contracts = findContractByID(id);
+        double endingPrice = Calculator.contractCancelationFee(contracts);
+        template.update(sql, endingPrice, id);
+    }
 
 }

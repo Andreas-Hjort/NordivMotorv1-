@@ -49,10 +49,12 @@
             <th>Car model</th>
             <th>Car type</th>
             <th>Odometer</th>
+            <th>End odometer</th>
             <th>First name</th>
             <th>Last Name</th>
             <th>Date of reservation</th>
             <th>Date of hand in</th>
+            <th>Fuel</th>
             <th>Price</th>
             <th>Address for pick up</th>
             <th>Zip for pick up</th>
@@ -68,10 +70,12 @@
             <td th:text="${contracts.model}"/>
             <td th:text="${contracts.type_cars}"/>
             <td th:text="${contracts.odometer}"/>
+            <td th:text="${contracts.end_kilometer}"/>
             <td th:text="${contracts.first_Name}"/>
             <td th:text="${contracts.last_Name}"/>
             <td th:text="${contracts.date_of_Reserve}"/>
             <td th:text="${contracts.date_of_handIn}"/>
+            <td th:text="${contracts.fuel}"/>
             <td th:text="${contracts.total_price}"/>
             <td th:text="${contracts.address}"/>
             <td th:text="${contracts.zip}"/>
@@ -79,7 +83,16 @@
             <td th:text="${contracts.extratype}"/>
             <td>
                  <a th:href = "@{'/chooseContract/'+${contracts.id_contracts}}">
-                <button class="btn-edit" id="btn-edit">End reservation</button>
+                <button class="btn-delete" id="btn-edit">End odometer</button>
+                </a>
+                <a th:href = "@{'/cancelation/'+${contracts.id_contracts}}">
+                    <button class="btn-delete" id="btn-delete">Cancelation</button>
+                </a>
+                <a th:href = "@{'/endReservation/'+${contracts.id_contracts}}">
+                    <button class="btn-delete" id="btn-end">End reservation</button>
+                </a>
+                <a th:href ="@{'/fuel/'+${contracts.id_contracts}}" >
+                    <button class="btn-delete" id="btn-fuel">Changefuel</button>
                 </a>
 
             </td>

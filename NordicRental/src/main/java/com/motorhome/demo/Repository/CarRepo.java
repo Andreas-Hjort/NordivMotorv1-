@@ -40,6 +40,10 @@ public class CarRepo {
     public boolean Service(int id) {
         String sql = "UPDATE motorhome.cars SET service = NOT service WHERE id_cars = ?";
         return template.update(sql, id) > 0;
+    }
 
+    public boolean Status(int id){
+        String sql = "UPDATE motorhome.cars SET status = NOT status WHERE id_cars = ?";
+        return template.update(sql,id) > 0;
     }
 }

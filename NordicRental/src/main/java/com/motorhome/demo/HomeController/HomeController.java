@@ -84,18 +84,14 @@ public class HomeController {
     }
 
 
-    @GetMapping("/reserveCar/{id}")
-    public String addContract(@PathVariable("id") int id) {
-        contractService.createContract(id);
-        return "home/createContract";
-    }
-
     @GetMapping("/deleteContract/{id}")
     public String deleteContract(@PathVariable("id") int id) {
+        Contracts contracts = contractService.findcontractById(id);
+        carService.Status(contracts.getIDcar());
         contractService.deleteContract(id);
         return "redirect:/showContracts";
-
     }
+
     @GetMapping("/service/{id}")
     public String changeService(@PathVariable("id") int id){
         carService.Service(id);
@@ -130,6 +126,7 @@ public class HomeController {
         model.addAttribute(("contracts"), contracts);
         model.addAttribute("carslist", cars);
         model.addAttribute("drops", drops);
+        carService.Status(contracts.getIDcar());
         contractService.addContract(contracts);
         return "redirect:/reserveCar";
     }
@@ -168,14 +165,37 @@ public class HomeController {
     public String chooseContract(@PathVariable("id") int id, Model model) {
         Contracts contracts = contractService.findcontractById(id);
         model.addAttribute("contracts", contracts);
-        return "home/endContract";
+        return "home/endKilometerContract";
     }
 
     @PostMapping("/chooseContract/{id}")
     public String chooseContract(@PathVariable("id") int id, @ModelAttribute Contracts c){
         contractService.updatekilometer(id, c);
+
         return "redirect:/showContracts";
     }
+
+    @GetMapping("/cancelation/{id}")
+    public String cancelContract(@PathVariable("id") int id, Model model){
+        contractService.cancelationPrice(id);
+        Contracts contracts = contractService.findcontractById(id);
+        model.addAttribute("contracts", contracts);
+        return "home/cancelContracts";
+    }
+
+    @GetMapping("/fuel/{id}")
+    public String changeFuel(@PathVariable("id") int id){
+        contractService.changeFuel(id);
+        return "redirect:/showContracts";
+    }
+
+    @GetMapping("/endReservation/{id}")
+    public String Endreservation(@PathVariable("id") int id, Model model){
+        Contracts contracts = contractService.findcontractById(id);
+        model.addAttribute("contracts", contracts);
+        return "home/EndContract";
+    }
+
 }
 
 

@@ -28,10 +28,6 @@ public class ContractService {
         return contractRepo.deleteContract(id);
     }
 
-    public void createContract(int id){
-        contractRepo.createContract(id);
-    }
-
     public Contracts findcontractById(int id){
         return contractRepo.findContractByID(id);
     }
@@ -40,7 +36,15 @@ public class ContractService {
         contractRepo.updateContract(id, c);
     }
 
-    public void updatekilometer(int id, Contracts c) {contractRepo.updateKilometer(id , c);}
+    public void updatekilometer(int id, Contracts c) {contractRepo.changeEndingPriceKilometer(id, c );}
+
+    public void cancelationPrice(int id){
+        contractRepo.cancelationPrice(id);
+    }
+
+    public void changeFuel(int id){
+        contractRepo.changeFuel(id);
+    }
 
     public List<Contracts> findContractByIdList(int id){
         return findContractByIdList(id);
